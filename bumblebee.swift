@@ -8,14 +8,18 @@
 import Foundation
 
 class Pattern {
-    var matched:((String) -> (text: String,offset: Int))?
+    var matched:((String,String,Int) -> (text: String,offset: Int))?
     var start = 0
     var end = -1
     var text: String
+    var recursive: Bool
     var current: Character
     var mustFullfill = true
     var index = 0
-    init(_ text: String, _ start: Int, _ matched: ((String) -> (String,Int))?) {
+    var rewindIndex = 0
+    init(_ text: String, _ start: Int, _ recursive: Bool, _ matched: ((String,String,Int) -> (String,Int))?) {
+        self.mustFullfill = true
+        self.recursive = recursive
         self.start = start
         self.text = text
         self.matched = matched
@@ -31,63 +35,72 @@ class Pattern {
         if current == "?" {
             next()
             mustFullfill = false
-        } else {
-            mustFullfill = true
+            rewindIndex = index
+        }
+        return false
+    }
+    func rewind() -> Bool {
+        if index > rewindIndex && rewindIndex > 0 {
+            index = rewindIndex
+            current = text[advance(text.startIndex, rewindIndex)]
+            return true
         }
         return false
     }
 }
 class Matcher {
     var src: String
-    var matched:((String) -> (String,Int))?
-    init(src: String,matched:((String) -> (String,Int))?) {
+    var recursive: Bool
+    var matched:((String,String,Int) -> (String,Int))?
+    init(src: String,recursive: Bool ,matched:((String,String,Int) -> (String,Int))?) {
         self.src = src
         self.matched = matched
+        self.recursive = recursive
     }
 }
 ///This makes the == work for Pattern objects
 extension Pattern: Equatable {}
 
 func ==(lhs: Pattern, rhs: Pattern) -> Bool {
-    return lhs.text == rhs.text
+    return lhs.text == rhs.text && lhs.start == rhs.start
 }
 
 public class BumbleBee {
     
     var patterns = Array<Matcher>()
     
-    public func add(pattern: String, matched: ((String) -> (String,Int))?) {
-        patterns.append(Matcher(src: pattern, matched: matched))
+    public func add(pattern: String, recursive: Bool, matched: ((String,String,Int) -> (String,Int))?) {
+        patterns.append(Matcher(src: pattern, recursive: recursive, matched: matched))
     }
     
-    public func process(srcText: String) {
+    public func process(srcText: String) -> String {
         var pending = Array<Pattern>()
         var index = 0
         var text = srcText
         for char in text {
             var consumed = false
-            for pattern in pending {
+            for pattern in pending.reverse() {
                 if char != pattern.current && pattern.mustFullfill {
-                    println("remove this pattern")
-                    //pending.removeLast()
                     pending = pending.filter{$0 != pattern}
                 } else if char == pattern.current {
                     if pattern.next() {
                         pattern.end = index
-                        println("finished a pattern: \(pattern.text)")
                         let range = advance(text.startIndex, pattern.start)...advance(text.startIndex, pattern.end)
-                        println("text range: \(text[range])")
+                        //println("text range: \(text[range])")
                         if let match = pattern.matched {
                             let src = text[range]
                             let srcLen = countElements(src)
-                            var replace = match(src)
+                            var replace = match(src,text,pattern.start)
                             text.replaceRange(range, with: replace.text)
-                            index -= srcLen-countElements(replace.text)
+                            index -= (srcLen-countElements(replace.text))
                         }
-                        //pending.removeLast()
                         pending = pending.filter{$0 != pattern}
                         consumed = true
-                        break
+                        //break
+                    }
+                } else {
+                    if pattern.rewind() && !pattern.recursive {
+                        pending = pending.filter{$0 != pattern}
                     }
                 }
             }
@@ -95,13 +108,12 @@ public class BumbleBee {
             if !consumed {
                 for matchable in patterns {
                     if char == matchable.src[matchable.src.startIndex] {
-                        println("possible pattern: \(matchable.src)")
-                        pending.append(Pattern(matchable.src,index,matchable.matched))
+                        pending.append(Pattern(matchable.src,index, matchable.recursive,matchable.matched))
                     }
                 }
             }
             index++
         }
-        println("text is: \(text)")
+        return text
     }
 }
