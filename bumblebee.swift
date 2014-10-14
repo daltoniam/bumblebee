@@ -79,10 +79,15 @@ public class BumbleBee {
         var text = srcText
         for char in text {
             var consumed = false
+            var lastChar: Character?
             for pattern in pending.reverse() {
                 if char != pattern.current && pattern.mustFullfill {
                     pending = pending.filter{$0 != pattern}
                 } else if char == pattern.current {
+                    if lastChar == char {
+                        lastChar = nil
+                        continue //it is matching on the same pattern, so skip it
+                    }
                     if pattern.next() {
                         pattern.end = index
                         let range = advance(text.startIndex, pattern.start)...advance(text.startIndex, pattern.end)
@@ -92,7 +97,11 @@ public class BumbleBee {
                             let srcLen = countElements(src)
                             var replace = match(src,text,pattern.start)
                             text.replaceRange(range, with: replace.text)
-                            index -= (srcLen-countElements(replace.text))
+                            let offset = (srcLen-countElements(replace.text))
+                            index -= offset
+                            if offset > 0 {
+                                lastChar = char
+                            }
                         }
                         pending = pending.filter{$0 != pattern}
                         consumed = true
