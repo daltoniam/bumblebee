@@ -6,11 +6,11 @@
 //
 
 import Foundation
-#if os(iOS)
-import UIKit
-#elseif os(OSX)
-import Cocoa
-#endif
+//#if os(iOS)
+//import UIKit
+//#elseif os(OSX)
+//import Cocoa
+//#endif
 
 //The support support class that keeps a track of the patterns while processing
 class Pattern {
@@ -77,6 +77,11 @@ public class BumbleBee {
     
     ///The patterns array holds all the variables that make up a pattern
     var patterns = Array<Matcher>()
+    
+    //standard init method that does nothing.
+    public init() {
+        
+    }
     
     ///add a new pattern for processing. The closure is called when a match is found and allows the replacement text and attributes to be applied.
     public func add(pattern: String, recursive: Bool, matched: ((String,String,Int) -> (String,[NSObject : AnyObject]?))?) {
