@@ -1,7 +1,7 @@
 ![bubblebee](http://idigitalcitizen.files.wordpress.com/2009/07/1920x1200-bumblebee88.jpg)
 
 
-Bubblebee is an abstract text processing and pattern matching engine in Swift. It converts text patterns into NSAttributedStrings. This provides support for things like markdown and basic HTML tags to be properly converted from raw text to expected style using NSAttributedString. Example markdown engine is included. 
+Bubblebee is an abstract text processing and pattern matching engine in Swift for iOS and OSX. This provides support for things like markdown and basic HTML tags to be properly converted from raw text to expected style using NSAttributedString. Example markdown engine is included. 
 
 ## Features
 
