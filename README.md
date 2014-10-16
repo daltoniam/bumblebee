@@ -65,9 +65,9 @@ let attrString = bee.process(rawText)
 label.attributedText = attrString
 ```
 
-This converts the `rawText` into:
+Which looks like:
 
-//picture here
+![example](https://raw.githubusercontent.com/daltoniam/bumblebee/assets/example.png)
 
 ## Requirements
 
