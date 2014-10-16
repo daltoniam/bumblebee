@@ -6,11 +6,11 @@
 //
 
 import Foundation
-//#if os(iOS)
-//import UIKit
-//#elseif os(OSX)
-//import Cocoa
-//#endif
+#if os(iOS)
+import UIKit
+#elseif os(OSX)
+import Cocoa
+#endif
 
 //The support support class that keeps a track of the patterns while processing
 class Pattern {
@@ -77,6 +77,10 @@ public class BumbleBee {
     
     ///The patterns array holds all the variables that make up a pattern
     var patterns = Array<Matcher>()
+    //returns the character used for attachments
+    public var attachmentString: String {
+        return "\(Character(UnicodeScalar(NSAttachmentCharacter)))"
+    }
     
     //standard init method that does nothing.
     public init() {

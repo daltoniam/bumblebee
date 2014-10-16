@@ -11,9 +11,63 @@ Bubblebee is an abstract text processing and pattern matching engine in Swift fo
 
 ## Examples
 
+This is a simple example, but showcases a powerful use case.
+
 ```swift
-//let's get some examples in here, with some pictures, got to have the pics.
+//first we create our label to show our text
+let label = UILabel(frame: CGRectMake(0, 65, view.frame.size.width, 400))
+label.numberOfLines = 0
+view.addSubview(label)
+
+//we create this textAttachment to show our embedded image
+var textAttachment = NSTextAttachment(data: nil, ofType: nil)
+
+//the raw text we have. 
+let rawText = "Hello I am *red* and I am _bold_. Here is an image: ![](http://vluxe.io/assets/images/logo.png)"
+
+//create our BumbleBee object.
+let bee = BumbleBee()
+
+//our red text pattern
+bee.add("*?*", recursive: false) { (pattern: String, text: String, start: Int) -> (String, [NSObject : AnyObject]?) in
+    let replace = pattern[advance(pattern.startIndex, 1)...advance(pattern.endIndex, -2)]
+    return (replace,[NSForegroundColorAttributeName: UIColor.redColor()])
+}
+//the bold pattern
+bee.add("_?_", recursive: false) { (pattern: String, text: String, start: Int) -> (String, [NSObject : AnyObject]?) in
+    let replace = pattern[advance(pattern.startIndex, 1)...advance(pattern.endIndex, -2)]
+    return (replace,[NSFontAttributeName: UIFont.boldSystemFontOfSize(17)])
+}
+//the image pattern
+bee.add("![?](?)", recursive: false, matched: { (pattern: String, text: String, start: Int) in
+    let range = pattern.rangeOfString("]")
+    if let end = range {
+        let findRange = pattern.rangeOfString("(")
+        if let startRange = findRange {
+            let url = pattern[advance(startRange.startIndex, 1)..<advance(pattern.endIndex, -1)]
+			//using Skeets, we can easily fetch the remote image
+            ImageManager.sharedManager.fetch(url, progress: { (Double) in
+                }, success: { (data: NSData) in
+                    let img = UIImage(data: data)
+                    textAttachment.image = img
+                    textAttachment.bounds = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
+                    label.setNeedsDisplay() //tell our label to redraw now that we have our image
+                    
+                }, failure: { (error: NSError) in
+            })
+        }
+        return (bee.attachmentString,[NSAttachmentAttributeName: textAttachment]) // embed an attachment
+    }
+    return ("",nil) //don't change anything, not a match
+})
+//now that we have our patterns, we call process and get the NSAttributedString
+let attrString = bee.process(rawText)
+label.attributedText = attrString
 ```
+
+This converts the `rawText` into:
+
+//picture here
 
 ## Requirements
 
