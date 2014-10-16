@@ -45,7 +45,7 @@ bee.add("![?](?)", recursive: false, matched: { (pattern: String, text: String, 
         let findRange = pattern.rangeOfString("(")
         if let startRange = findRange {
             let url = pattern[advance(startRange.startIndex, 1)..<advance(pattern.endIndex, -1)]
-			//using Skeets, we can easily fetch the remote image
+			//using Skeets(), we can easily fetch the remote image
             ImageManager.sharedManager.fetch(url, progress: { (Double) in
                 }, success: { (data: NSData) in
                     let img = UIImage(data: data)
@@ -68,6 +68,9 @@ label.attributedText = attrString
 Which looks like:
 
 ![example](https://raw.githubusercontent.com/daltoniam/bumblebee/assets/example.png)
+
+Image Loading Library:
+[Skeets](https://github.com/daltoniam/Skeets)
 
 ## Requirements
 
