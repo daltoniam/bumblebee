@@ -7,16 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CDE6C2119F19E4D00509EE9 /* BumbleBeeOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CDE6C1619F19E4D00509EE9 /* BumbleBeeOSX.framework */; };
+		5CDE6C2819F19E4D00509EE9 /* BumbleBeeOSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE6C2719F19E4D00509EE9 /* BumbleBeeOSXTests.swift */; };
+		5CDE6C2F19F19E6A00509EE9 /* bumblebee.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CF68FF619EEF8E100AE0B2F /* bumblebee.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5CDE6C3019F19E9000509EE9 /* bumblebee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68FFA19EEF8F400AE0B2F /* bumblebee.swift */; };
 		5CF68FF719EEF8E100AE0B2F /* bumblebee.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CF68FF619EEF8E100AE0B2F /* bumblebee.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5CF68FF919EEF8EB00AE0B2F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CF68FF819EEF8EB00AE0B2F /* Info.plist */; };
 		5CF68FFB19EEF8F400AE0B2F /* bumblebee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68FFA19EEF8F400AE0B2F /* bumblebee.swift */; };
 		5CF6900019EEF93A00AE0B2F /* bumblebeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68FFC19EEF8FD00AE0B2F /* bumblebeeTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5CDE6C2219F19E4D00509EE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C3BE81419EEF85700FEDF2B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5CDE6C1519F19E4D00509EE9;
+			remoteInfo = BumbleBeeOSX;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5C3BE81D19EEF85700FEDF2B /* BumbleBee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BumbleBee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3BE82819EEF85700FEDF2B /* BumbleBee.temp_caseinsensitive_renameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BumbleBee.temp_caseinsensitive_renameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3BE82B19EEF85700FEDF2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CDE6C1619F19E4D00509EE9 /* BumbleBeeOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BumbleBeeOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CDE6C1919F19E4D00509EE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CDE6C2019F19E4D00509EE9 /* BumbleBeeOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BumbleBeeOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CDE6C2619F19E4D00509EE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CDE6C2719F19E4D00509EE9 /* BumbleBeeOSXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BumbleBeeOSXTests.swift; sourceTree = "<group>"; };
 		5CF68FF619EEF8E100AE0B2F /* bumblebee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bumblebee.h; sourceTree = SOURCE_ROOT; };
 		5CF68FF819EEF8EB00AE0B2F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		5CF68FFA19EEF8F400AE0B2F /* bumblebee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bumblebee.swift; sourceTree = SOURCE_ROOT; };
@@ -39,6 +57,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5CDE6C1219F19E4D00509EE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CDE6C1D19F19E4D00509EE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CDE6C2119F19E4D00509EE9 /* BumbleBeeOSX.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -47,6 +80,8 @@
 			children = (
 				5C3BE81F19EEF85700FEDF2B /* bumblebee */,
 				5C3BE82919EEF85700FEDF2B /* Tests */,
+				5CDE6C1719F19E4D00509EE9 /* BumbleBeeOSX */,
+				5CDE6C2419F19E4D00509EE9 /* BumbleBeeOSXTests */,
 				5C3BE81E19EEF85700FEDF2B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +91,8 @@
 			children = (
 				5C3BE81D19EEF85700FEDF2B /* BumbleBee.framework */,
 				5C3BE82819EEF85700FEDF2B /* BumbleBee.temp_caseinsensitive_renameTests.xctest */,
+				5CDE6C1619F19E4D00509EE9 /* BumbleBeeOSX.framework */,
+				5CDE6C2019F19E4D00509EE9 /* BumbleBeeOSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,6 +134,39 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		5CDE6C1719F19E4D00509EE9 /* BumbleBeeOSX */ = {
+			isa = PBXGroup;
+			children = (
+				5CDE6C1819F19E4D00509EE9 /* Supporting Files */,
+			);
+			path = BumbleBeeOSX;
+			sourceTree = "<group>";
+		};
+		5CDE6C1819F19E4D00509EE9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5CDE6C1919F19E4D00509EE9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5CDE6C2419F19E4D00509EE9 /* BumbleBeeOSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				5CDE6C2719F19E4D00509EE9 /* BumbleBeeOSXTests.swift */,
+				5CDE6C2519F19E4D00509EE9 /* Supporting Files */,
+			);
+			path = BumbleBeeOSXTests;
+			sourceTree = "<group>";
+		};
+		5CDE6C2519F19E4D00509EE9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5CDE6C2619F19E4D00509EE9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -105,6 +175,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CF68FF719EEF8E100AE0B2F /* bumblebee.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CDE6C1319F19E4D00509EE9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CDE6C2F19F19E6A00509EE9 /* bumblebee.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,13 +224,49 @@
 			productReference = 5C3BE82819EEF85700FEDF2B /* BumbleBee.temp_caseinsensitive_renameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		5CDE6C1519F19E4D00509EE9 /* BumbleBeeOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CDE6C2D19F19E4D00509EE9 /* Build configuration list for PBXNativeTarget "BumbleBeeOSX" */;
+			buildPhases = (
+				5CDE6C1119F19E4D00509EE9 /* Sources */,
+				5CDE6C1219F19E4D00509EE9 /* Frameworks */,
+				5CDE6C1319F19E4D00509EE9 /* Headers */,
+				5CDE6C1419F19E4D00509EE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BumbleBeeOSX;
+			productName = BumbleBeeOSX;
+			productReference = 5CDE6C1619F19E4D00509EE9 /* BumbleBeeOSX.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5CDE6C1F19F19E4D00509EE9 /* BumbleBeeOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CDE6C2E19F19E4D00509EE9 /* Build configuration list for PBXNativeTarget "BumbleBeeOSXTests" */;
+			buildPhases = (
+				5CDE6C1C19F19E4D00509EE9 /* Sources */,
+				5CDE6C1D19F19E4D00509EE9 /* Frameworks */,
+				5CDE6C1E19F19E4D00509EE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5CDE6C2319F19E4D00509EE9 /* PBXTargetDependency */,
+			);
+			name = BumbleBeeOSXTests;
+			productName = BumbleBeeOSXTests;
+			productReference = 5CDE6C2019F19E4D00509EE9 /* BumbleBeeOSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		5C3BE81419EEF85700FEDF2B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = vluxe;
 				TargetAttributes = {
 					5C3BE81C19EEF85700FEDF2B = {
@@ -160,6 +274,12 @@
 					};
 					5C3BE82719EEF85700FEDF2B = {
 						CreatedOnToolsVersion = 6.0.1;
+					};
+					5CDE6C1519F19E4D00509EE9 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					5CDE6C1F19F19E4D00509EE9 = {
+						CreatedOnToolsVersion = 6.1;
 					};
 				};
 			};
@@ -177,6 +297,8 @@
 			targets = (
 				5C3BE81C19EEF85700FEDF2B /* BumbleBee */,
 				5C3BE82719EEF85700FEDF2B /* BumbleBeeTests */,
+				5CDE6C1519F19E4D00509EE9 /* BumbleBeeOSX */,
+				5CDE6C1F19F19E4D00509EE9 /* BumbleBeeOSXTests */,
 			);
 		};
 /* End PBXProject section */
@@ -186,11 +308,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CF68FF919EEF8EB00AE0B2F /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5C3BE82619EEF85700FEDF2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CDE6C1419F19E4D00509EE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CDE6C1E19F19E4D00509EE9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -216,7 +351,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5CDE6C1119F19E4D00509EE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CDE6C3019F19E9000509EE9 /* bumblebee.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CDE6C1C19F19E4D00509EE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CDE6C2819F19E4D00509EE9 /* BumbleBeeOSXTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5CDE6C2319F19E4D00509EE9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5CDE6C1519F19E4D00509EE9 /* BumbleBeeOSX */;
+			targetProxy = 5CDE6C2219F19E4D00509EE9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5C3BE82E19EEF85700FEDF2B /* Debug */ = {
@@ -314,6 +473,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -331,6 +491,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -367,6 +528,86 @@
 			};
 			name = Release;
 		};
+		5CDE6C2919F19E4D00509EE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BumbleBeeOSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5CDE6C2A19F19E4D00509EE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = BumbleBeeOSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		5CDE6C2B19F19E4D00509EE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BumbleBeeOSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5CDE6C2C19F19E4D00509EE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BumbleBeeOSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -393,6 +634,24 @@
 			buildConfigurations = (
 				5C3BE83419EEF85700FEDF2B /* Debug */,
 				5C3BE83519EEF85700FEDF2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CDE6C2D19F19E4D00509EE9 /* Build configuration list for PBXNativeTarget "BumbleBeeOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CDE6C2919F19E4D00509EE9 /* Debug */,
+				5CDE6C2A19F19E4D00509EE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CDE6C2E19F19E4D00509EE9 /* Build configuration list for PBXNativeTarget "BumbleBeeOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CDE6C2B19F19E4D00509EE9 /* Debug */,
+				5CDE6C2C19F19E4D00509EE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

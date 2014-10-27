@@ -9,7 +9,7 @@ import Foundation
 #if os(iOS)
 import UIKit
 #elseif os(OSX)
-import Cocoa
+import AppKit
 #endif
 
 //The support support class that keeps a track of the patterns while processing
