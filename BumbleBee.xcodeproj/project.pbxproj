@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C1F84721A5C957500DA333D /* bumblebeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68FFC19EEF8FD00AE0B2F /* bumblebeeTests.swift */; };
 		5CDE6C2119F19E4D00509EE9 /* BumbleBeeOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CDE6C1619F19E4D00509EE9 /* BumbleBeeOSX.framework */; };
-		5CDE6C2819F19E4D00509EE9 /* BumbleBeeOSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE6C2719F19E4D00509EE9 /* BumbleBeeOSXTests.swift */; };
 		5CDE6C2F19F19E6A00509EE9 /* bumblebee.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CF68FF619EEF8E100AE0B2F /* bumblebee.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5CDE6C3019F19E9000509EE9 /* bumblebee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68FFA19EEF8F400AE0B2F /* bumblebee.swift */; };
 		5CF68FF719EEF8E100AE0B2F /* bumblebee.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CF68FF619EEF8E100AE0B2F /* bumblebee.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,10 +31,7 @@
 		5C3BE82819EEF85700FEDF2B /* BumbleBee.temp_caseinsensitive_renameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BumbleBee.temp_caseinsensitive_renameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3BE82B19EEF85700FEDF2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CDE6C1619F19E4D00509EE9 /* BumbleBeeOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BumbleBeeOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5CDE6C1919F19E4D00509EE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CDE6C2019F19E4D00509EE9 /* BumbleBeeOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BumbleBeeOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5CDE6C2619F19E4D00509EE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5CDE6C2719F19E4D00509EE9 /* BumbleBeeOSXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BumbleBeeOSXTests.swift; sourceTree = "<group>"; };
 		5CF68FF619EEF8E100AE0B2F /* bumblebee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bumblebee.h; sourceTree = SOURCE_ROOT; };
 		5CF68FF819EEF8EB00AE0B2F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		5CF68FFA19EEF8F400AE0B2F /* bumblebee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bumblebee.swift; sourceTree = SOURCE_ROOT; };
@@ -80,8 +77,6 @@
 			children = (
 				5C3BE81F19EEF85700FEDF2B /* bumblebee */,
 				5C3BE82919EEF85700FEDF2B /* Tests */,
-				5CDE6C1719F19E4D00509EE9 /* BumbleBeeOSX */,
-				5CDE6C2419F19E4D00509EE9 /* BumbleBeeOSXTests */,
 				5C3BE81E19EEF85700FEDF2B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -134,39 +129,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5CDE6C1719F19E4D00509EE9 /* BumbleBeeOSX */ = {
-			isa = PBXGroup;
-			children = (
-				5CDE6C1819F19E4D00509EE9 /* Supporting Files */,
-			);
-			path = BumbleBeeOSX;
-			sourceTree = "<group>";
-		};
-		5CDE6C1819F19E4D00509EE9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5CDE6C1919F19E4D00509EE9 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5CDE6C2419F19E4D00509EE9 /* BumbleBeeOSXTests */ = {
-			isa = PBXGroup;
-			children = (
-				5CDE6C2719F19E4D00509EE9 /* BumbleBeeOSXTests.swift */,
-				5CDE6C2519F19E4D00509EE9 /* Supporting Files */,
-			);
-			path = BumbleBeeOSXTests;
-			sourceTree = "<group>";
-		};
-		5CDE6C2519F19E4D00509EE9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5CDE6C2619F19E4D00509EE9 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -189,9 +151,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5C3BE81C19EEF85700FEDF2B /* BumbleBee */ = {
+		5C3BE81C19EEF85700FEDF2B /* Bumblebee */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5C3BE83019EEF85700FEDF2B /* Build configuration list for PBXNativeTarget "BumbleBee" */;
+			buildConfigurationList = 5C3BE83019EEF85700FEDF2B /* Build configuration list for PBXNativeTarget "Bumblebee" */;
 			buildPhases = (
 				5C3BE81819EEF85700FEDF2B /* Sources */,
 				5C3BE81919EEF85700FEDF2B /* Frameworks */,
@@ -202,14 +164,14 @@
 			);
 			dependencies = (
 			);
-			name = BumbleBee;
+			name = Bumblebee;
 			productName = bumblebee;
 			productReference = 5C3BE81D19EEF85700FEDF2B /* BumbleBee.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		5C3BE82719EEF85700FEDF2B /* BumbleBeeTests */ = {
+		5C3BE82719EEF85700FEDF2B /* BumblebeeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5C3BE83319EEF85700FEDF2B /* Build configuration list for PBXNativeTarget "BumbleBeeTests" */;
+			buildConfigurationList = 5C3BE83319EEF85700FEDF2B /* Build configuration list for PBXNativeTarget "BumblebeeTests" */;
 			buildPhases = (
 				5C3BE82419EEF85700FEDF2B /* Sources */,
 				5C3BE82519EEF85700FEDF2B /* Frameworks */,
@@ -219,14 +181,14 @@
 			);
 			dependencies = (
 			);
-			name = BumbleBeeTests;
+			name = BumblebeeTests;
 			productName = bumblebeeTests;
 			productReference = 5C3BE82819EEF85700FEDF2B /* BumbleBee.temp_caseinsensitive_renameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		5CDE6C1519F19E4D00509EE9 /* BumbleBeeOSX */ = {
+		5CDE6C1519F19E4D00509EE9 /* BumblebeeOSX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5CDE6C2D19F19E4D00509EE9 /* Build configuration list for PBXNativeTarget "BumbleBeeOSX" */;
+			buildConfigurationList = 5CDE6C2D19F19E4D00509EE9 /* Build configuration list for PBXNativeTarget "BumblebeeOSX" */;
 			buildPhases = (
 				5CDE6C1119F19E4D00509EE9 /* Sources */,
 				5CDE6C1219F19E4D00509EE9 /* Frameworks */,
@@ -237,14 +199,14 @@
 			);
 			dependencies = (
 			);
-			name = BumbleBeeOSX;
+			name = BumblebeeOSX;
 			productName = BumbleBeeOSX;
 			productReference = 5CDE6C1619F19E4D00509EE9 /* BumbleBeeOSX.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		5CDE6C1F19F19E4D00509EE9 /* BumbleBeeOSXTests */ = {
+		5CDE6C1F19F19E4D00509EE9 /* BumblebeeOSXTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5CDE6C2E19F19E4D00509EE9 /* Build configuration list for PBXNativeTarget "BumbleBeeOSXTests" */;
+			buildConfigurationList = 5CDE6C2E19F19E4D00509EE9 /* Build configuration list for PBXNativeTarget "BumblebeeOSXTests" */;
 			buildPhases = (
 				5CDE6C1C19F19E4D00509EE9 /* Sources */,
 				5CDE6C1D19F19E4D00509EE9 /* Frameworks */,
@@ -255,7 +217,7 @@
 			dependencies = (
 				5CDE6C2319F19E4D00509EE9 /* PBXTargetDependency */,
 			);
-			name = BumbleBeeOSXTests;
+			name = BumblebeeOSXTests;
 			productName = BumbleBeeOSXTests;
 			productReference = 5CDE6C2019F19E4D00509EE9 /* BumbleBeeOSXTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -295,10 +257,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5C3BE81C19EEF85700FEDF2B /* BumbleBee */,
-				5C3BE82719EEF85700FEDF2B /* BumbleBeeTests */,
-				5CDE6C1519F19E4D00509EE9 /* BumbleBeeOSX */,
-				5CDE6C1F19F19E4D00509EE9 /* BumbleBeeOSXTests */,
+				5C3BE81C19EEF85700FEDF2B /* Bumblebee */,
+				5C3BE82719EEF85700FEDF2B /* BumblebeeTests */,
+				5CDE6C1519F19E4D00509EE9 /* BumblebeeOSX */,
+				5CDE6C1F19F19E4D00509EE9 /* BumblebeeOSXTests */,
 			);
 		};
 /* End PBXProject section */
@@ -363,7 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CDE6C2819F19E4D00509EE9 /* BumbleBeeOSXTests.swift in Sources */,
+				5C1F84721A5C957500DA333D /* bumblebeeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,7 +334,7 @@
 /* Begin PBXTargetDependency section */
 		5CDE6C2319F19E4D00509EE9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5CDE6C1519F19E4D00509EE9 /* BumbleBeeOSX */;
+			target = 5CDE6C1519F19E4D00509EE9 /* BumblebeeOSX */;
 			targetProxy = 5CDE6C2219F19E4D00509EE9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -541,7 +503,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = BumbleBeeOSX/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -561,7 +523,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = BumbleBeeOSX/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -583,7 +545,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = BumbleBeeOSXTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -600,7 +562,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = BumbleBeeOSXTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -620,7 +582,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C3BE83019EEF85700FEDF2B /* Build configuration list for PBXNativeTarget "BumbleBee" */ = {
+		5C3BE83019EEF85700FEDF2B /* Build configuration list for PBXNativeTarget "Bumblebee" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5C3BE83119EEF85700FEDF2B /* Debug */,
@@ -629,7 +591,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C3BE83319EEF85700FEDF2B /* Build configuration list for PBXNativeTarget "BumbleBeeTests" */ = {
+		5C3BE83319EEF85700FEDF2B /* Build configuration list for PBXNativeTarget "BumblebeeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5C3BE83419EEF85700FEDF2B /* Debug */,
@@ -638,7 +600,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5CDE6C2D19F19E4D00509EE9 /* Build configuration list for PBXNativeTarget "BumbleBeeOSX" */ = {
+		5CDE6C2D19F19E4D00509EE9 /* Build configuration list for PBXNativeTarget "BumblebeeOSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5CDE6C2919F19E4D00509EE9 /* Debug */,
@@ -647,7 +609,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5CDE6C2E19F19E4D00509EE9 /* Build configuration list for PBXNativeTarget "BumbleBeeOSXTests" */ = {
+		5CDE6C2E19F19E4D00509EE9 /* Build configuration list for PBXNativeTarget "BumblebeeOSXTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5CDE6C2B19F19E4D00509EE9 /* Debug */,

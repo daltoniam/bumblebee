@@ -1,7 +1,7 @@
-![bubblebee](http://idigitalcitizen.files.wordpress.com/2009/07/1920x1200-bumblebee88.jpg)
+![bumblebee](http://idigitalcitizen.files.wordpress.com/2009/07/1920x1200-bumblebee88.jpg)
 
 
-Bubblebee is an abstract text processing and pattern matching engine in Swift for iOS and OSX. This provides support for things like markdown and basic HTML tags to be properly converted from raw text to expected style using NSAttributedString. Example markdown engine is included. 
+Bumblebee is an abstract text processing and pattern matching engine in Swift for iOS and OSX. This provides support for things like markdown and basic HTML tags to be properly converted from raw text to expected style using NSAttributedString. Example markdown engine is included. 
 
 ## Features
 
@@ -11,7 +11,16 @@ Bubblebee is an abstract text processing and pattern matching engine in Swift fo
 
 ## Examples
 
-This is a simple example, but showcases a powerful use case.
+First thing is to import the framework. See the Installation instructions on how to add the framework to your project.
+
+```swift
+//iOS
+import Bumblebee
+//OS X
+import BumblebeeOSX
+```
+
+This is a simple code example, but showcases a powerful use case.
 
 ```swift
 //first we create our label to show our text
@@ -44,15 +53,14 @@ bee.add("![?](?)", recursive: false, matched: { (pattern: String, text: String, 
     if let end = range {
         let findRange = pattern.rangeOfString("(")
         if let startRange = findRange {
-            let url = pattern[advance(startRange.startIndex, 1)..<advance(pattern.endIndex, -1)]
-			//using Skeets(), we can easily fetch the remote image
+            let url = pattern[advance(startRange.startIndex, 1)..< advance(pattern.endIndex, -1)]
+			//using Skeets, we can easily fetch the remote image
             ImageManager.sharedManager.fetch(url, progress: { (Double) in
                 }, success: { (data: NSData) in
                     let img = UIImage(data: data)
                     textAttachment.image = img
                     textAttachment.bounds = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
                     label.setNeedsDisplay() //tell our label to redraw now that we have our image
-                    
                 }, failure: { (error: NSError) in
             })
         }
@@ -72,23 +80,56 @@ Which looks like:
 Image Loading Library:
 [Skeets](https://github.com/daltoniam/Skeets)
 
+## Details
+
+The `?` is the wildcard. It is simply means that any character between these opening and closing characters could be a match.
+
 ## Requirements
 
-Bubblebee requires at least iOS 7/OSX 10.10 or above.
+Bumblebee requires at least iOS 7/OSX 10.10 or above.
 
 ## Installation
 
-Add the `bubblebee.xcodeproj` to your Xcode project. Once that is complete, in your "Build Phases" add the `bubblebee.framework` to your "Link Binary with Libraries" phase.
+### Cocoapods
+
+```
+Coming soon...(Hopefully!)
+```
+
+### Carthage
+
+Check out the [Carthage](https://github.com/Carthage/Carthage) docs on how to add a install. The `Bumblebee` framework is already setup with shared schemes.
+
+[Carthage Install](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application)
+
+### Rogue
+
+First see the [installation docs](https://github.com/acmacalister/Rogue) for how to install Rogue.
+
+To install JSONJoy run the command below in the directory you created the rogue file.
+
+```
+rogue add https://github.com/daltoniam/bumblebee
+```
+
+Next open the `libs` folder and add the `Bumblebee.xcodeproj` to your Xcode project. Once that is complete, in your "Build Phases" add the `Bumblebee.framework` to your "Link Binary with Libraries" phase. Make sure to add the `libs` folder to your `.gitignore` file.
+
+### Other
+
+Simply grab the framework (either via git submodule or another package manager).
+
+Add the `Bumblebee.xcodeproj` to your Xcode project. Once that is complete, in your "Build Phases" add the `Bumblebee.framework` to your "Link Binary with Libraries" phase.
+
 
 ## TODOs
 
 - [ ] Complete Docs
 - [ ] Add Unit Tests
-- [ ] Add [Rouge](https://github.com/acmacalister/Rouge) Installation Docs
+- [ ] Create full markdown engine example.
 
 ## License
 
-Bubblebee is licensed under the Apache v2 License.
+Bumblebee is licensed under the Apache v2 License.
 
 ## Contact
 
