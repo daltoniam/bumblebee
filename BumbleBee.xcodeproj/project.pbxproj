@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C1F84721A5C957500DA333D /* bumblebeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68FFC19EEF8FD00AE0B2F /* bumblebeeTests.swift */; };
-		5CDE6C2119F19E4D00509EE9 /* BumbleBeeOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CDE6C1619F19E4D00509EE9 /* BumbleBeeOSX.framework */; };
+		5CDE6C2119F19E4D00509EE9 /* BumblebeeOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CDE6C1619F19E4D00509EE9 /* BumblebeeOSX.framework */; };
 		5CDE6C2F19F19E6A00509EE9 /* bumblebee.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CF68FF619EEF8E100AE0B2F /* bumblebee.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5CDE6C3019F19E9000509EE9 /* bumblebee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68FFA19EEF8F400AE0B2F /* bumblebee.swift */; };
 		5CF68FF719EEF8E100AE0B2F /* bumblebee.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CF68FF619EEF8E100AE0B2F /* bumblebee.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,11 +27,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5C3BE81D19EEF85700FEDF2B /* BumbleBee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BumbleBee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C3BE81D19EEF85700FEDF2B /* Bumblebee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bumblebee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3BE82819EEF85700FEDF2B /* BumbleBee.temp_caseinsensitive_renameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BumbleBee.temp_caseinsensitive_renameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3BE82B19EEF85700FEDF2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5CDE6C1619F19E4D00509EE9 /* BumbleBeeOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BumbleBeeOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5CDE6C2019F19E4D00509EE9 /* BumbleBeeOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BumbleBeeOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CDE6C1619F19E4D00509EE9 /* BumblebeeOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BumblebeeOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CDE6C2019F19E4D00509EE9 /* BumblebeeOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BumblebeeOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CF68FF619EEF8E100AE0B2F /* bumblebee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bumblebee.h; sourceTree = SOURCE_ROOT; };
 		5CF68FF819EEF8EB00AE0B2F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		5CF68FFA19EEF8F400AE0B2F /* bumblebee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bumblebee.swift; sourceTree = SOURCE_ROOT; };
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CDE6C2119F19E4D00509EE9 /* BumbleBeeOSX.framework in Frameworks */,
+				5CDE6C2119F19E4D00509EE9 /* BumblebeeOSX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,10 +84,10 @@
 		5C3BE81E19EEF85700FEDF2B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5C3BE81D19EEF85700FEDF2B /* BumbleBee.framework */,
+				5C3BE81D19EEF85700FEDF2B /* Bumblebee.framework */,
 				5C3BE82819EEF85700FEDF2B /* BumbleBee.temp_caseinsensitive_renameTests.xctest */,
-				5CDE6C1619F19E4D00509EE9 /* BumbleBeeOSX.framework */,
-				5CDE6C2019F19E4D00509EE9 /* BumbleBeeOSXTests.xctest */,
+				5CDE6C1619F19E4D00509EE9 /* BumblebeeOSX.framework */,
+				5CDE6C2019F19E4D00509EE9 /* BumblebeeOSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,7 +166,7 @@
 			);
 			name = Bumblebee;
 			productName = bumblebee;
-			productReference = 5C3BE81D19EEF85700FEDF2B /* BumbleBee.framework */;
+			productReference = 5C3BE81D19EEF85700FEDF2B /* Bumblebee.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5C3BE82719EEF85700FEDF2B /* BumblebeeTests */ = {
@@ -201,7 +201,7 @@
 			);
 			name = BumblebeeOSX;
 			productName = BumbleBeeOSX;
-			productReference = 5CDE6C1619F19E4D00509EE9 /* BumbleBeeOSX.framework */;
+			productReference = 5CDE6C1619F19E4D00509EE9 /* BumblebeeOSX.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5CDE6C1F19F19E4D00509EE9 /* BumblebeeOSXTests */ = {
@@ -219,7 +219,7 @@
 			);
 			name = BumblebeeOSXTests;
 			productName = BumbleBeeOSXTests;
-			productReference = 5CDE6C2019F19E4D00509EE9 /* BumbleBeeOSXTests.xctest */;
+			productReference = 5CDE6C2019F19E4D00509EE9 /* BumblebeeOSXTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
