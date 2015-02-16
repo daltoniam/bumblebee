@@ -35,7 +35,7 @@ class Pattern {
     }
     func next() -> Bool {
         index++
-        if index >= countElements(text) {
+        if index >= count(text) {
             return true
         }
         current = text[advance(text.startIndex, index)]
@@ -114,11 +114,11 @@ public class BumbleBee {
                         //println("text range: \(text[range])")
                         if let match = pattern.matched {
                             let src = text[range]
-                            let srcLen = countElements(src)
+                            let srcLen = count(src)
                             var replace = match(src,text,pattern.start)
                             if replace.attrs != nil {
                                 text.replaceRange(range, with: replace.text)
-                                let replaceLen = countElements(replace.text)
+                                let replaceLen = count(replace.text)
                                 index -= (srcLen-replaceLen)
                                 lastChar = char
                                 pattern.length = replaceLen
