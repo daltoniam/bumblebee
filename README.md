@@ -14,10 +14,7 @@ Bumblebee is an abstract text processing and pattern matching engine in Swift fo
 First thing is to import the framework. See the Installation instructions on how to add the framework to your project.
 
 ```swift
-//iOS
 import Bumblebee
-//OS X
-import BumblebeeOSX
 ```
 
 This is a simple code example, but showcases a powerful use case.
