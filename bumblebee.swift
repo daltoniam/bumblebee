@@ -17,7 +17,7 @@ class Pattern {
     var matched:((String,String,Int) -> (text: String,attrs: [NSObject : AnyObject]?))?
     var start = 0
     var length = -1
-    var attrs: [NSObject : AnyObject]?
+    var attrs: [String : AnyObject]?
     var text: String
     var recursive: Bool
     var current: Character
@@ -35,10 +35,10 @@ class Pattern {
     }
     func next() -> Bool {
         index++
-        if index >= count(text) {
+        if index >= text.characters.count {
             return true
         }
-        current = text[advance(text.startIndex, index)]
+        current = text[text.startIndex.advancedBy(index)]
         if current == "?" {
             next()
             mustFullfill = false
@@ -49,7 +49,7 @@ class Pattern {
     func rewind() -> Bool {
         if index > rewindIndex && rewindIndex > 0 {
             index = rewindIndex
-            current = text[advance(text.startIndex, rewindIndex)]
+            current = text[text.startIndex.advancedBy(rewindIndex)]
             return true
         }
         return false
@@ -98,10 +98,10 @@ public class BumbleBee {
         var collect = Array<Pattern>()
         var index = 0
         var text = srcText
-        for char in text {
+        for char in text.characters {
             var consumed = false
             var lastChar: Character?
-            for pattern in pending.reverse() {
+            for pattern in Array(pending.reverse()) {
                 if char != pattern.current && pattern.mustFullfill {
                     pending = pending.filter{$0 != pattern}
                 } else if char == pattern.current {
@@ -110,19 +110,19 @@ public class BumbleBee {
                         continue //it is matching on the same pattern, so skip it
                     }
                     if pattern.next() {
-                        let range = advance(text.startIndex, pattern.start)...advance(text.startIndex, index)
+                        let range = text.startIndex.advancedBy(pattern.start)...text.startIndex.advancedBy(index)
                         //println("text range: \(text[range])")
                         if let match = pattern.matched {
                             let src = text[range]
-                            let srcLen = count(src)
-                            var replace = match(src,text,pattern.start)
+                            let srcLen = src.characters.count
+                            let replace = match(src,text,pattern.start)
                             if replace.attrs != nil {
                                 text.replaceRange(range, with: replace.text)
-                                let replaceLen = count(replace.text)
+                                let replaceLen = replace.text.characters.count
                                 index -= (srcLen-replaceLen)
                                 lastChar = char
                                 pattern.length = replaceLen
-                                pattern.attrs = replace.attrs
+                                pattern.attrs = replace.attrs as? [String:AnyObject]
                             }
                         }
                         pending = pending.filter{$0 != pattern}
@@ -148,7 +148,7 @@ public class BumbleBee {
             index++
         }
         //we have our patterns, let's build a stylized string
-        var attributedText = NSMutableAttributedString(string: text)
+        let attributedText = NSMutableAttributedString(string: text)
         for pattern in collect {
             attributedText.setAttributes(pattern.attrs, range: NSMakeRange(pattern.start, pattern.length))
         }
