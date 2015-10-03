@@ -14,7 +14,7 @@ import AppKit
 
 //The support support class that keeps a track of the patterns while processing
 class Pattern {
-    var matched:((String,String,Int) -> (text: String,attrs: [NSObject : AnyObject]?))?
+    var matched:((String,String,Int) -> (text: String,attrs: [String : AnyObject]?))?
     var start = 0
     var length = -1
     var attrs: [String : AnyObject]?
@@ -24,7 +24,7 @@ class Pattern {
     var mustFullfill = true
     var index = 0
     var rewindIndex = 0
-    init(_ text: String, _ start: Int, _ recursive: Bool, _ matched: ((String,String,Int) -> (String,[NSObject : AnyObject]?))?) {
+    init(_ text: String, _ start: Int, _ recursive: Bool, _ matched: ((String,String,Int) -> (String,[String : AnyObject]?))?) {
         self.mustFullfill = true
         self.recursive = recursive
         self.start = start
@@ -58,8 +58,8 @@ class Pattern {
 class Matcher {
     var src: String
     var recursive: Bool
-    var matched:((String,String,Int) -> (String,[NSObject : AnyObject]?))?
-    init(src: String,recursive: Bool ,matched:((String,String,Int) -> (String,[NSObject : AnyObject]?))?) {
+    var matched:((String,String,Int) -> (String,[String : AnyObject]?))?
+    init(src: String,recursive: Bool ,matched:((String,String,Int) -> (String,[String : AnyObject]?))?) {
         self.src = src
         self.matched = matched
         self.recursive = recursive
@@ -88,7 +88,7 @@ public class BumbleBee {
     }
     
     ///add a new pattern for processing. The closure is called when a match is found and allows the replacement text and attributes to be applied.
-    public func add(pattern: String, recursive: Bool, matched: ((String,String,Int) -> (String,[NSObject : AnyObject]?))?) {
+    public func add(pattern: String, recursive: Bool, matched: ((String,String,Int) -> (String,[String : AnyObject]?))?) {
         patterns.append(Matcher(src: pattern, recursive: recursive, matched: matched))
     }
     
@@ -101,7 +101,7 @@ public class BumbleBee {
         for char in text.characters {
             var consumed = false
             var lastChar: Character?
-            for pattern in Array(pending.reverse()) {
+            for pattern in pending.reverse() {
                 if char != pattern.current && pattern.mustFullfill {
                     pending = pending.filter{$0 != pattern}
                 } else if char == pattern.current {
@@ -122,7 +122,7 @@ public class BumbleBee {
                                 index -= (srcLen-replaceLen)
                                 lastChar = char
                                 pattern.length = replaceLen
-                                pattern.attrs = replace.attrs as? [String:AnyObject]
+                                pattern.attrs = replace.attrs
                             }
                         }
                         pending = pending.filter{$0 != pattern}
@@ -155,3 +155,4 @@ public class BumbleBee {
         return attributedText
     }
 }
+
