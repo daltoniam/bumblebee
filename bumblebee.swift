@@ -87,13 +87,18 @@ public class BumbleBee {
         
     }
     
+    //standard init method that does nothing.
+    public init(attrString: NSAttributedString) {
+        
+    }
+    
     ///add a new pattern for processing. The closure is called when a match is found and allows the replacement text and attributes to be applied.
     public func add(pattern: String, recursive: Bool, matched: ((String,String,Int) -> (String,[NSObject : AnyObject]?))?) {
         patterns.append(Matcher(src: pattern, recursive: recursive, matched: matched))
     }
     
     //The srcText is the raw text to search matches for. A NSAttributedString is return stylized according to the matches.
-    public func process(srcText: String) -> NSAttributedString {
+    public func process(srcText: String, attributes: [String: AnyObject]? = nil) -> NSAttributedString {
         var pending = Array<Pattern>()
         var collect = Array<Pattern>()
         var index = 0
@@ -148,9 +153,16 @@ public class BumbleBee {
             index++
         }
         //we have our patterns, let's build a stylized string
-        let attributedText = NSMutableAttributedString(string: text)
+        let attributedText = NSMutableAttributedString(string: text, attributes: attributes)
         for pattern in collect {
-            attributedText.setAttributes(pattern.attrs, range: NSMakeRange(pattern.start, pattern.length))
+            let range = NSMakeRange(pattern.start, pattern.length)
+            var attrs = attributedText.attributesAtIndex(pattern.start, longestEffectiveRange: nil, inRange: range)
+            if let newAttrs = pattern.attrs {
+                for (key, value) in newAttrs {
+                    attrs[key] = value
+                }
+            }
+            attributedText.setAttributes(attrs, range: range)
         }
         return attributedText
     }

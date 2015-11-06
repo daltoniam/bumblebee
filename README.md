@@ -36,12 +36,12 @@ let bee = BumbleBee()
 
 //our red text pattern
 bee.add("*?*", recursive: false) { (pattern: String, text: String, start: Int) -> (String, [NSObject : AnyObject]?) in
-    let replace = pattern[advance(pattern.startIndex, 1)...advance(pattern.endIndex, -2)]
+    let replace = pattern[advancedBy(pattern.startIndex, 1)...advancedBy(pattern.endIndex, -2)]
     return (replace,[NSForegroundColorAttributeName: UIColor.redColor()])
 }
 //the bold pattern
 bee.add("_?_", recursive: false) { (pattern: String, text: String, start: Int) -> (String, [NSObject : AnyObject]?) in
-    let replace = pattern[advance(pattern.startIndex, 1)...advance(pattern.endIndex, -2)]
+    let replace = pattern[advancedBy(pattern.startIndex, 1)...advancedBy(pattern.endIndex, -2)]
     return (replace,[NSFontAttributeName: UIFont.boldSystemFontOfSize(17)])
 }
 //the image pattern
@@ -50,7 +50,7 @@ bee.add("![?](?)", recursive: false, matched: { (pattern: String, text: String, 
     if let end = range {
         let findRange = pattern.rangeOfString("(")
         if let startRange = findRange {
-            let url = pattern[advance(startRange.startIndex, 1)..< advance(pattern.endIndex, -1)]
+            let url = pattern[advancedBy(startRange.startIndex, 1)..< advancedBy(pattern.endIndex, -1)]
 			//using Skeets, we can easily fetch the remote image
             ImageManager.sharedManager.fetch(url, progress: { (Double) in
                 }, success: { (data: NSData) in
@@ -65,8 +65,14 @@ bee.add("![?](?)", recursive: false, matched: { (pattern: String, text: String, 
     }
     return ("",nil) //don't change anything, not a match
 })
+//header pattern
+bee.add("##?\n", recursive: false) { (pattern: String, text: String, start: Int) -> (String, [NSObject : AnyObject]?) in
+    let replace = pattern[advance(pattern.startIndex, 2)...advance(pattern.endIndex, -2)]
+    return (replace,[NSFontAttributeName: UIFont.systemFontOfSize(24)]) //whatever your large font is
+}
 //now that we have our patterns, we call process and get the NSAttributedString
-let attrString = bee.process(rawText)
+let defaultAttrs = [NSFontAttributeName: UIFont.systemFontOfSize(18)] //default attributes to apply
+let attrString = bee.process(rawText,attributes: defaultAttrs) //attributes can be omited if unneeded
 label.attributedText = attrString
 ```
 
@@ -80,6 +86,8 @@ Image Loading Library:
 ## Details
 
 The `?` is the wildcard. It is simply means that any character between these opening and closing characters could be a match.
+
+## 
 
 ## Requirements
 
@@ -113,7 +121,7 @@ Check out the [Carthage](https://github.com/Carthage/Carthage) docs on how to ad
 
 First see the [installation docs](https://github.com/acmacalister/Rogue) for how to install Rogue.
 
-To install JSONJoy run the command below in the directory you created the rogue file.
+To install Bumblebee run the command below in the directory you created the rogue file.
 
 ```
 rogue add https://github.com/daltoniam/bumblebee
@@ -129,7 +137,7 @@ Add the `Bumblebee.xcodeproj` to your Xcode project. Once that is complete, in y
 
 ### Add Copy Frameworks Phase
 
-If you are running this in an OSX app or on a physical iOS device you will need to make sure you add the `Bumblebee.framework` or `BumblebeeOSX.framework` to be included in your app bundle. To do this, in Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar. In the tab bar at the top of that window, open the "Build Phases" panel. Expand the "Link Binary with Libraries" group, and add `Bumblebee.framework` or `BumblebeeOSX.framework` depending on if you are building an iOS or OSX app. Click on the + button at the top left of the panel and select "New Copy Files Phase". Rename this new phase to "Copy Frameworks", set the "Destination" to "Frameworks", and add `Bumblebee.framework` or `BumblebeeOSX.framework` respectively.
+If you are running this in an OSX app or on a physical iOS device you will need to make sure you add the `Bumblebee.framework` included in your app bundle. To do this, in Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar. In the tab bar at the top of that window, open the "Build Phases" panel. Expand the "Link Binary with Libraries" group, and add `Bumblebee.framework`. Click on the + button at the top left of the panel and select "New Copy Files Phase". Rename this new phase to "Copy Frameworks", set the "Destination" to "Frameworks", and add `Bumblebee.framework`.
 
 ## TODOs
 
