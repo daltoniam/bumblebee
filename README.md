@@ -67,7 +67,7 @@ bee.add("![?](?)", recursive: false, matched: { (pattern: String, text: String, 
 })
 //header pattern
 bee.add("##?\n", recursive: false) { (pattern: String, text: String, start: Int) -> (String, [NSObject : AnyObject]?) in
-    let replace = pattern[advance(pattern.startIndex, 2)...advance(pattern.endIndex, -2)]
+    let replace = pattern[advancedBy(pattern.startIndex, 2)...advancedBy(pattern.endIndex, -2)]
     return (replace,[NSFontAttributeName: UIFont.systemFontOfSize(24)]) //whatever your large font is
 }
 //now that we have our patterns, we call process and get the NSAttributedString
