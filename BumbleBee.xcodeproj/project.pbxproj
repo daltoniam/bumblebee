@@ -14,6 +14,8 @@
 		5CF68FF719EEF8E100AE0B2F /* bumblebee.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CF68FF619EEF8E100AE0B2F /* bumblebee.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5CF68FFB19EEF8F400AE0B2F /* bumblebee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68FFA19EEF8F400AE0B2F /* bumblebee.swift */; };
 		5CF6900019EEF93A00AE0B2F /* bumblebeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68FFC19EEF8FD00AE0B2F /* bumblebeeTests.swift */; };
+		66484FEB1BF35D8B0090FB9A /* bumblebee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68FFA19EEF8F400AE0B2F /* bumblebee.swift */; };
+		66484FEE1BF35D8B0090FB9A /* bumblebee.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CF68FF619EEF8E100AE0B2F /* bumblebee.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,7 @@
 		5CF68FFA19EEF8F400AE0B2F /* bumblebee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bumblebee.swift; sourceTree = SOURCE_ROOT; };
 		5CF68FFC19EEF8FD00AE0B2F /* bumblebeeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = bumblebeeTests.swift; path = Tests/bumblebeeTests.swift; sourceTree = SOURCE_ROOT; };
 		5CF68FFD19EEF8FD00AE0B2F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = SOURCE_ROOT; };
+		66484FF31BF35D8B0090FB9A /* Bumblebee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bumblebee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +72,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		66484FEC1BF35D8B0090FB9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -88,6 +98,7 @@
 				5C3BE82819EEF85700FEDF2B /* BumbleBee.temp_caseinsensitive_renameTests.xctest */,
 				5CDE6C1619F19E4D00509EE9 /* Bumblebee.framework */,
 				5CDE6C2019F19E4D00509EE9 /* BumblebeeOSXTests.xctest */,
+				66484FF31BF35D8B0090FB9A /* Bumblebee.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,6 +156,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CDE6C2F19F19E6A00509EE9 /* bumblebee.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66484FED1BF35D8B0090FB9A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66484FEE1BF35D8B0090FB9A /* bumblebee.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +241,24 @@
 			productReference = 5CDE6C2019F19E4D00509EE9 /* BumblebeeOSXTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		66484FE91BF35D8B0090FB9A /* BumblebeeTv */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66484FF01BF35D8B0090FB9A /* Build configuration list for PBXNativeTarget "BumblebeeTv" */;
+			buildPhases = (
+				66484FEA1BF35D8B0090FB9A /* Sources */,
+				66484FEC1BF35D8B0090FB9A /* Frameworks */,
+				66484FED1BF35D8B0090FB9A /* Headers */,
+				66484FEF1BF35D8B0090FB9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BumblebeeTv;
+			productName = bumblebee;
+			productReference = 66484FF31BF35D8B0090FB9A /* Bumblebee.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -229,7 +266,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = vluxe;
 				TargetAttributes = {
 					5C3BE81C19EEF85700FEDF2B = {
@@ -262,6 +299,7 @@
 				5C3BE82719EEF85700FEDF2B /* BumblebeeTests */,
 				5CDE6C1519F19E4D00509EE9 /* BumblebeeOSX */,
 				5CDE6C1F19F19E4D00509EE9 /* BumblebeeOSXTests */,
+				66484FE91BF35D8B0090FB9A /* BumblebeeTv */,
 			);
 		};
 /* End PBXProject section */
@@ -289,6 +327,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5CDE6C1E19F19E4D00509EE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66484FEF1BF35D8B0090FB9A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -330,6 +375,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		66484FEA1BF35D8B0090FB9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66484FEB1BF35D8B0090FB9A /* bumblebee.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -362,6 +415,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -476,6 +530,7 @@
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vluxe.io.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = BumbleBee.temp_caseinsensitive_renameTests;
 			};
 			name = Debug;
@@ -489,6 +544,7 @@
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vluxe.io.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = BumbleBee.temp_caseinsensitive_renameTests;
 			};
 			name = Release;
@@ -551,6 +607,7 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vluxe.io.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -568,8 +625,52 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vluxe.io.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		66484FF11BF35D8B0090FB9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BITCODE_GENERATION_MODE = marker;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vluxe.io.Bumblebee;
+				PRODUCT_NAME = Bumblebee;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		66484FF21BF35D8B0090FB9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BITCODE_GENERATION_MODE = bitcode;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vluxe.io.Bumblebee;
+				PRODUCT_NAME = Bumblebee;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -617,6 +718,15 @@
 			buildConfigurations = (
 				5CDE6C2B19F19E4D00509EE9 /* Debug */,
 				5CDE6C2C19F19E4D00509EE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66484FF01BF35D8B0090FB9A /* Build configuration list for PBXNativeTarget "BumblebeeTv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66484FF11BF35D8B0090FB9A /* Debug */,
+				66484FF21BF35D8B0090FB9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
