@@ -95,7 +95,7 @@ Bumblebee requires at least iOS 7/OSX 10.10 or above.
 
 ## Installation
 
-### Cocoapods
+### CocoaPods
 
 Check out [Get Started](http://cocoapods.org/) tab on [cocoapods.org](http://cocoapods.org/).
 
