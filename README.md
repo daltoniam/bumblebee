@@ -105,7 +105,7 @@ To use Bumblebee in your project add the following 'Podfile' to your project
 	platform :ios, '8.0'
 	use_frameworks!
 
-	pod 'Bumblebee', '~> 0.9.1'
+	pod 'Bumblebee', '~> 1.0.1'
 
 Then run:
 
