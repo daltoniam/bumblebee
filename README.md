@@ -41,7 +41,7 @@ bee.add("*?*", recursive: false) { (pattern: String, text: String, start: Int) -
 }
 //the bold pattern
 bee.add("_?_", recursive: false) { (pattern: String, text: String, start: Int) -> (String, [NSObject : AnyObject]?) in
-    let replace = pattern[advancedBy(pattern.startIndex, 1)...advancedBy(pattern.endIndex, -2)]
+    let replace = pattern[pattern.startIndex.advancedBy(1)...pattern.endIndex.advancedBy(-2)]
     return (replace,[NSFontAttributeName: UIFont.boldSystemFontOfSize(17)])
 }
 //the image pattern
@@ -50,16 +50,14 @@ bee.add("![?](?)", recursive: false, matched: { (pattern: String, text: String, 
     if let end = range {
         let findRange = pattern.rangeOfString("(")
         if let startRange = findRange {
-            let url = pattern[advancedBy(startRange.startIndex, 1)..< advancedBy(pattern.endIndex, -1)]
-			//using Skeets, we can easily fetch the remote image
-            ImageManager.sharedManager.fetch(url, progress: { (Double) in
-                }, success: { (data: NSData) in
+            let url = pattern[startRange.startIndex.advancedBy(1)..< pattern.endIndex.advancedBy(-1)]
+			//using a remote image library or your choice (ImageLibrary isn't real!), we can easily fetch the remote image
+            ImageLibrary.fetch(url, completion: { (data: NSData) in
                     let img = UIImage(data: data)
                     textAttachment.image = img
                     textAttachment.bounds = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
                     label.setNeedsDisplay() //tell our label to redraw now that we have our image
-                }, failure: { (error: NSError) in
-            })
+                })
         }
         return (bee.attachmentString,[NSAttachmentAttributeName: textAttachment]) // embed an attachment
     }
@@ -67,7 +65,7 @@ bee.add("![?](?)", recursive: false, matched: { (pattern: String, text: String, 
 })
 //header pattern
 bee.add("##?\n", recursive: false) { (pattern: String, text: String, start: Int) -> (String, [NSObject : AnyObject]?) in
-    let replace = pattern[advancedBy(pattern.startIndex, 2)...advancedBy(pattern.endIndex, -2)]
+    let replace = pattern[pattern.startIndex.advancedBy(2)...pattern.endIndex.advancedBy(-2)]
     return (replace,[NSFontAttributeName: UIFont.systemFontOfSize(24)]) //whatever your large font is
 }
 //now that we have our patterns, we call process and get the NSAttributedString
@@ -79,9 +77,6 @@ label.attributedText = attrString
 Which looks like:
 
 ![example](https://raw.githubusercontent.com/daltoniam/bumblebee/assets/example.png)
-
-Image Loading Library:
-[Skeets](https://github.com/daltoniam/Skeets)
 
 ## Details
 

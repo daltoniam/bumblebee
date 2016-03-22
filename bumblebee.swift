@@ -34,7 +34,7 @@ class Pattern {
         next()
     }
     func next() -> Bool {
-        index++
+        index += 1
         if index >= text.characters.count {
             return true
         }
@@ -150,7 +150,7 @@ public class BumbleBee {
                     }
                 }
             }
-            index++
+            index += 1
         }
         //we have our patterns, let's build a stylized string
         let attributedText = NSMutableAttributedString(string: text, attributes: attributes)
