@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C1F84721A5C957500DA333D /* bumblebeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68FFC19EEF8FD00AE0B2F /* bumblebeeTests.swift */; };
 		5CDE6C2119F19E4D00509EE9 /* Bumblebee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CDE6C1619F19E4D00509EE9 /* Bumblebee.framework */; };
 		5CDE6C2F19F19E6A00509EE9 /* bumblebee.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CF68FF619EEF8E100AE0B2F /* bumblebee.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5CDE6C3019F19E9000509EE9 /* bumblebee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68FFA19EEF8F400AE0B2F /* bumblebee.swift */; };
@@ -371,7 +370,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C1F84721A5C957500DA333D /* bumblebeeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
