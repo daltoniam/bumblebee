@@ -130,7 +130,7 @@ public class BumbleBee {
                                 pattern.attrs = replace.attrs as? [String:AnyObject]
                             }
                         }
-                        pending = pending.filter{$0 != pattern}
+                        pending = []
                         consumed = true
                         if pattern.length > -1 {
                             collect.append(pattern)
