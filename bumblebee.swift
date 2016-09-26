@@ -14,7 +14,7 @@ import AppKit
 
 //The support support class that keeps a track of the patterns while processing
 class Pattern {
-    var matched:((String,String,Int) -> (text: String,attrs: [NSObject : AnyObject]?))?
+    var matched:((String,String,Int) -> (text: String,attrs: [AnyHashable: Any]?))?
     var start = 0
     var length = -1
     var attrs: [String : AnyObject]?
@@ -24,7 +24,7 @@ class Pattern {
     var mustFullfill = true
     var index = 0
     var rewindIndex = 0
-    init(_ text: String, _ start: Int, _ recursive: Bool, _ matched: ((String,String,Int) -> (String,[NSObject : AnyObject]?))?) {
+    init(_ text: String, _ start: Int, _ recursive: Bool, _ matched: ((String,String,Int) -> (String,[AnyHashable: Any]?))?) {
         self.mustFullfill = true
         self.recursive = recursive
         self.start = start
@@ -38,7 +38,7 @@ class Pattern {
         if index >= text.characters.count {
             return true
         }
-        current = text[text.startIndex.advancedBy(index)]
+        current = text[text.characters.index(text.startIndex, offsetBy: index)]
         if current == "?" {
             next()
             mustFullfill = false
@@ -49,7 +49,7 @@ class Pattern {
     func rewind() -> Bool {
         if index > rewindIndex && rewindIndex > 0 {
             index = rewindIndex
-            current = text[text.startIndex.advancedBy(rewindIndex)]
+            current = text[text.characters.index(text.startIndex, offsetBy: rewindIndex)]
             return true
         }
         return false
@@ -58,8 +58,8 @@ class Pattern {
 class Matcher {
     var src: String
     var recursive: Bool
-    var matched:((String,String,Int) -> (String,[NSObject : AnyObject]?))?
-    init(src: String,recursive: Bool ,matched:((String,String,Int) -> (String,[NSObject : AnyObject]?))?) {
+    var matched:((String,String,Int) -> (String,[AnyHashable: Any]?))?
+    init(src: String,recursive: Bool ,matched:((String,String,Int) -> (String,[AnyHashable: Any]?))?) {
         self.src = src
         self.matched = matched
         self.recursive = recursive
@@ -73,13 +73,13 @@ func ==(lhs: Pattern, rhs: Pattern) -> Bool {
 }
 
 ///This class is where the magic happens.
-public class BumbleBee {
+open class BumbleBee {
     
     ///The patterns array holds all the variables that make up a pattern
     var patterns = Array<Matcher>()
     //returns the character used for attachments
-    public var attachmentString: String {
-        return "\(Character(UnicodeScalar(NSAttachmentCharacter)))"
+    open var attachmentString: String {
+        return "\(Character(UnicodeScalar(NSAttachmentCharacter)!))"
     }
     
     //standard init method that does nothing.
@@ -93,12 +93,12 @@ public class BumbleBee {
     }
     
     ///add a new pattern for processing. The closure is called when a match is found and allows the replacement text and attributes to be applied.
-    public func add(pattern: String, recursive: Bool, matched: ((String,String,Int) -> (String,[NSObject : AnyObject]?))?) {
+    open func add(_ pattern: String, recursive: Bool, matched: ((String,String,Int) -> (String,[AnyHashable: Any]?))?) {
         patterns.append(Matcher(src: pattern, recursive: recursive, matched: matched))
     }
     
     //The srcText is the raw text to search matches for. A NSAttributedString is return stylized according to the matches.
-    public func process(srcText: String, attributes: [String: AnyObject]? = nil) -> NSAttributedString {
+    open func process(_ srcText: String, attributes: [String: AnyObject]? = nil) -> NSAttributedString {
         var pending = Array<Pattern>()
         var collect = Array<Pattern>()
         var index = 0
@@ -106,7 +106,7 @@ public class BumbleBee {
         for char in text.characters {
             var consumed = false
             var lastChar: Character?
-            for pattern in Array(pending.reverse()) {
+            for pattern in Array(pending.reversed()) {
                 if char != pattern.current && pattern.mustFullfill {
                     pending = pending.filter{$0 != pattern}
                 } else if char == pattern.current {
@@ -115,14 +115,14 @@ public class BumbleBee {
                         continue //it is matching on the same pattern, so skip it
                     }
                     if pattern.next() {
-                        let range = text.startIndex.advancedBy(pattern.start)...text.startIndex.advancedBy(index)
+                        let range = text.characters.index(text.startIndex, offsetBy: pattern.start)...text.characters.index(text.startIndex, offsetBy: index)
                         //println("text range: \(text[range])")
                         if let match = pattern.matched {
                             let src = text[range]
                             let srcLen = src.characters.count
                             let replace = match(src,text,pattern.start)
                             if replace.attrs != nil {
-                                text.replaceRange(range, with: replace.text)
+                                text.replaceSubrange(range, with: replace.text)
                                 let replaceLen = replace.text.characters.count
                                 index -= (srcLen-replaceLen)
                                 lastChar = char
@@ -156,7 +156,7 @@ public class BumbleBee {
         let attributedText = NSMutableAttributedString(string: text, attributes: attributes)
         for pattern in collect {
             let range = NSMakeRange(pattern.start, pattern.length)
-            var attrs = attributedText.attributesAtIndex(pattern.start, longestEffectiveRange: nil, inRange: range)
+            var attrs = attributedText.attributes(at: pattern.start, longestEffectiveRange: nil, in: range)
             if let newAttrs = pattern.attrs {
                 for (key, value) in newAttrs {
                     attrs[key] = value
