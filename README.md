@@ -1,12 +1,11 @@
 ![bumblebee](http://idigitalcitizen.files.wordpress.com/2009/07/1920x1200-bumblebee88.jpg)
 
 
-Bumblebee is an abstract text processing and pattern matching engine in Swift for iOS and OSX. This provides support for things like markdown and basic HTML tags to be properly converted from raw text to expected style using NSAttributedString. Example markdown engine is included.
+Bumblebee is an abstract text processing and pattern matching engine in Swift (using regular expressions). This provides support for things like basic markdown tags or highlight user names, links, emails, etc. It takes a string and converts it to a NSAttributedString. Several common patterns are include to make implementation easy and quick.
 
 ## Features
 
 - Abstract and simple. Creating patterns is simple, yet flexible.
-- Fast. Only one pass is make through the raw string to minimize parse time.
 - Simple concise codebase at just a few hundred LOC.
 
 ## Examples
@@ -20,58 +19,43 @@ import Bumblebee
 This is a simple code example, but showcases a powerful use case.
 
 ```swift
-//first we create our label to show our text
-let label = UILabel(frame: CGRectMake(0, 65, view.frame.size.width, 400))
+//add the label to the view
+let label = UILabel(frame: CGRect(x: 0, y: 65, width: view.frame.size.width, height: 400))
 label.numberOfLines = 0
 view.addSubview(label)
 
-//we create this textAttachment to show our embedded image
-var textAttachment = NSTextAttachment(data: nil, ofType: nil)
-
-//the raw text we have.
-let rawText = "Hello I am *red* and I am _bold_. Here is an image: ![](http://vluxe.io/assets/images/logo.png)"
-
-//create our BumbleBee object.
-let bee = BumbleBee()
-
-//our red text pattern
-bee.add("*?*", recursive: false) { (pattern: String, text: String, start: Int) -> (String, [NSObject : AnyObject]?) in
-    let replace = pattern[advancedBy(pattern.startIndex, 1)...advancedBy(pattern.endIndex, -2)]
-    return (replace,[NSForegroundColorAttributeName: UIColor.redColor()])
+let rawText = "Hello I am *red* and I am __bold__. [link here](http://vluxe.io/) Here is an image: ![](http://imgs.xkcd.com/comics/encoding.png). This is a second link: [Apple](https://apple.com). I like *turtles*"
+parser.add(pattern: MDLinkPattern()) { (str, attributes) in
+    let link = attributes![MDLinkPattern.linkAttribute]!
+    return MatchedResponse(string: str, attributes: [NSAttributedStringKey.foregroundColor: UIColor.blue,
+                                                     NSAttributedStringKey.link: URL(string: link)!])
 }
-//the bold pattern
-bee.add("_?_", recursive: false) { (pattern: String, text: String, start: Int) -> (String, [NSObject : AnyObject]?) in
-    let replace = pattern[pattern.startIndex.advancedBy(1)...pattern.endIndex.advancedBy(-2)]
-    return (replace,[NSFontAttributeName: UIFont.boldSystemFontOfSize(17)])
-}
-//the image pattern
-bee.add("![?](?)", recursive: false, matched: { (pattern: String, text: String, start: Int) in
-    let range = pattern.rangeOfString("]")
-    if let end = range {
-        let findRange = pattern.rangeOfString("(")
-        if let startRange = findRange {
-            let url = pattern[startRange.startIndex.advancedBy(1)..< pattern.endIndex.advancedBy(-1)]
-			//using a remote image library or your choice (ImageLibrary isn't real!), we can easily fetch the remote image
-            ImageLibrary.fetch(url, completion: { (data: NSData) in
-                    let img = UIImage(data: data)
-                    textAttachment.image = img
-                    textAttachment.bounds = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
-                    label.setNeedsDisplay() //tell our label to redraw now that we have our image
-                })
+
+parser.add(pattern: MDImagePattern()) { (str, attributes) in
+    let link = attributes![MDImagePattern.linkAttribute]!
+    let textAttachment = NSTextAttachment(data: nil, ofType: nil)
+    HTTP.GET(link) { (response) in
+        let img = UIImage(data: response.data)!
+        textAttachment.image = UIImage(data: response.data)
+        textAttachment.bounds = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
+        DispatchQueue.main.async {
+            label.setNeedsDisplay() //tell our label to redraw now that we have our image
         }
-        return (bee.attachmentString,[NSAttachmentAttributeName: textAttachment]) // embed an attachment
     }
-    return ("",nil) //don't change anything, not a match
-})
-//header pattern
-bee.add("##?\n", recursive: false) { (pattern: String, text: String, start: Int) -> (String, [NSObject : AnyObject]?) in
-    let replace = pattern[pattern.startIndex.advancedBy(2)...pattern.endIndex.advancedBy(-2)]
-    return (replace,[NSFontAttributeName: UIFont.systemFontOfSize(24)]) //whatever your large font is
+    return MatchedResponse(string: str, attributes: [NSAttributedStringKey.attachment: textAttachment])
 }
-//now that we have our patterns, we call process and get the NSAttributedString
-let defaultAttrs = [NSFontAttributeName: UIFont.systemFontOfSize(18)] //default attributes to apply
-let attrString = bee.process(rawText,attributes: defaultAttrs) //attributes can be omited if unneeded
-label.attributedText = attrString
+
+parser.add(pattern: MDBoldPattern()) { (str, attributes) in
+    return MatchedResponse(string: str, attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 17)])
+}
+
+parser.add(pattern: MDEmphasisPattern()) { (str, attributes) in
+    return MatchedResponse(string: str, attributes: [NSAttributedStringKey.foregroundColor: UIColor.red])
+}
+
+parser.process(text: rawText) { (attrString) in
+    label.attributedText = attrString
+}
 ```
 
 Which looks like:
@@ -80,13 +64,70 @@ Which looks like:
 
 ## Details
 
-The `?` is the wildcard. It is simply means that any character between these opening and closing characters could be a match.
+The patterns are processed with regular expressions. Creating custom patterns is accomplished be implementing the `Pattern` protocol. 
 
-## 
+```swift
+//Matches URLs. e.g. (http://domain.com/url/etc)
+public struct LinkPattern : Pattern {
+    public init() {} //only need to allow public initialization
+    public func regex() throws -> NSRegularExpression {
+        return try NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+    }
+}
 
-## Requirements
+//Matches typical user name patterns from social platforms like twitter. (@daltoniam, etc)
+public struct UserNamePattern : Pattern {
+    public init() {} //only need to allow public initialization
+    public func regex() throws -> NSRegularExpression {
+        //twitter requires between 4 and 15 char for a user name, but hightlights the user name at one char...
+        //so I'm using {1,15} instead of {4,15}, but could be easily changed depending on requirements
+        return try NSRegularExpression(pattern: "(?<=\\s|^)@[a-zA-Z0-9_]{1,15}\\b", options: .caseInsensitive)
+    }
+}
 
-Bumblebee requires at least iOS 7/OSX 10.10 or above.
+//Matches hex strings to convert them to their proper unicode version.
+public struct UnicodePattern : Pattern {
+    public init() {} //only need to allow public initialization
+    public func regex() throws -> NSRegularExpression {
+        return try NSRegularExpression(pattern: "(?<=\\s|^)U\\+[a-zA-Z0-9]{2,6}\\b", options: .caseInsensitive)
+    }
+    
+    //The transform method allows a pattern to do pre processing on the text before it shows up in the matched closure.
+    //convert the hex to its proper Unicode scalar. e.g. (U+1F602 to 😂)
+    public func transform(text: String) -> (text: String, attributes: [String: String]?) {
+        let offset = text.index(text.startIndex, offsetBy: 2)
+        let hex = String(text[offset..<text.endIndex])
+        if let i = Int(hex, radix: 16) {
+            let scalar = UnicodeScalar(i)
+            if let scalar = scalar {
+                return (text: String(Character(scalar)), attributes: nil)
+            }
+        }
+        return (text: text, attributes: nil)
+    }
+}
+
+//your custom pattern!
+public struct MyCustomPattern : Pattern {
+    public init() {} //only need to allow public initialization
+    public func regex() throws -> NSRegularExpression {
+        return try NSDataDetector(types: NSTextCheckingResult.CheckingType.address.rawValue)
+    }
+}
+```
+
+Then just call:
+
+```swift
+//your custom pattern here!
+parser.add(pattern: MyCustomPattern()) { (str, attributes) in
+    return MatchedResponse(string: str, attributes: [NSAttributedStringKey.foregroundColor: UIColor.purple])
+}
+```
+
+See more examples at the bottom of the `bumblebee.swift` file.
+
+
 
 ## Installation
 
@@ -97,10 +138,10 @@ Check out [Get Started](http://cocoapods.org/) tab on [cocoapods.org](http://coc
 To use Bumblebee in your project add the following 'Podfile' to your project
 
 	source 'https://github.com/CocoaPods/Specs.git'
-	platform :ios, '8.0'
+	platform :ios, '10.0'
 	use_frameworks!
 
-	pod 'Bumblebee', '~> 1.0.1'
+	pod 'Bumblebee', '~> 2.0.0'
 
 Then run:
 
@@ -136,9 +177,7 @@ If you are running this in an OSX app or on a physical iOS device you will need 
 
 ## TODOs
 
-- [ ] Complete Docs
-- [ ] Add Unit Tests
-- [ ] Create full markdown engine example.
+- [ ] Finish Unit Tests
 
 ## License
 
