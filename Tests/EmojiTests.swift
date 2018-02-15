@@ -20,24 +20,28 @@ class EmojiTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+
+	let parser = Parser()
     
     func testEmojiExample() {
-		let breakingString = " *hello* .  *hello*  cncnc cncnc  *hello*  hmm\n  *hello*  🦌🐎🦌🐎\n  *hello*  Screen Shot 2017-10-12 at 11.04.58 AM.png  *hello*  vVe2keakU8.gif  *hello*   *hello* "
-
-
-		let parser = Parser()
-
+		let breakingString = "🐎 *hello* "
+   
 		let parseExpectation = expectation(description: "parsing expectation")
 
 		parser.add(pattern: MDEmphasisPattern()) { (str, attributes) in
-			return MatchedResponse(string: str, attributes: [:])
+			return MatchedResponse(string: str, attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 10.0)])
 		}
 
 		parser.process(text: breakingString) { (attrString) in
-			guard let _ = attrString else {
+			guard let attrString = attrString else {
 				return
 			}
-			parseExpectation.fulfill()
+			let rangeToCompare = NSRange.init(location: 3, length: 5)
+			attrString.enumerateAttributes(in: NSRange(location: 0, length: attrString.string.count), options: [.longestEffectiveRangeNotRequired], using: { (value, range, isStop) in
+				if range == rangeToCompare {
+					parseExpectation.fulfill()
+				}
+			})
 		}
 
 		wait(for: [parseExpectation], timeout: 10.0)
