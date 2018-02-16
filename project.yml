@@ -6,16 +6,12 @@ options:
     watchOS: 2.0
 targets:
   Bumblebee:
-    scheme:
-      gatherCoverageData: true
-      testTargets:
-        - KayakoSDKSwiftTest_$platform
-    settings:
-      base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.vluxe.io.Bumblebee
     type: framework
     platform: [iOS, macOS, watchOS]
     sources: Sources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.vluxe.io.Bumblebee
     scheme:
       gatherCoverageData: true
       testTargets:

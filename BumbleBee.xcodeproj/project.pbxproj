@@ -7,18 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF_106046297315 /* Bumblebee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FR_526567392730 /* Bumblebee.framework */; };
+		BF_106046297315 /* Bumblebee_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FR_526567392730 /* Bumblebee_macOS.framework */; };
 		BF_110315273102 /* EmojiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_616239973998 /* EmojiTests.swift */; };
 		BF_275924708092 /* EmojiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_616239973998 /* EmojiTests.swift */; };
+		BF_334643629608 = {isa = PBXBuildFile; fileRef = FR_661919236675 /* BumblebeeTests_watchOS.xctest */; };
 		BF_343655923077 /* bumblebeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_768980951973 /* bumblebeeTests.swift */; };
-		BF_359335301727 /* Bumblebee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FR_919963003752 /* Bumblebee.framework */; };
+		BF_359335301727 /* Bumblebee_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FR_919963003752 /* Bumblebee_iOS.framework */; };
+		BF_370065185541 = {isa = PBXBuildFile; fileRef = FR_526567392730 /* Bumblebee_macOS.framework */; };
 		BF_377132814360 /* bumblebeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_768980951973 /* bumblebeeTests.swift */; };
+		BF_494566846231 = {isa = PBXBuildFile; fileRef = FR_537431329142 /* BumblebeeTests_macOS.xctest */; };
 		BF_525206097606 /* bumblebeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_768980951973 /* bumblebeeTests.swift */; };
-		BF_630092758418 /* Bumblebee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FR_458247305677 /* Bumblebee.framework */; };
+		BF_541773765746 = {isa = PBXBuildFile; fileRef = FR_458247305677 /* Bumblebee_watchOS.framework */; };
+		BF_630092758418 /* Bumblebee_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FR_458247305677 /* Bumblebee_watchOS.framework */; };
 		BF_696100807664 /* EmojiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_616239973998 /* EmojiTests.swift */; };
+		BF_780160517364 = {isa = PBXBuildFile; fileRef = FR_533142740653 /* BumblebeeTests_iOS.xctest */; };
 		BF_785914417868 /* bumblebee.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_385710148880 /* bumblebee.swift */; };
 		BF_795594604760 /* bumblebee.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_385710148880 /* bumblebee.swift */; };
 		BF_796503813307 /* bumblebee.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_385710148880 /* bumblebee.swift */; };
+		BF_843539276101 = {isa = PBXBuildFile; fileRef = FR_919963003752 /* Bumblebee_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,16 +52,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FR_385710148880 /* bumblebee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bumblebee.swift; sourceTree = "<group>"; };
-		FR_458247305677 /* Bumblebee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bumblebee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FR_526567392730 /* Bumblebee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bumblebee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FR_533142740653 /* BumblebeeTests_iOS.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = file; name = BumblebeeTests_iOS.xctest; path = BumblebeeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FR_537431329142 /* BumblebeeTests_macOS.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = file; name = BumblebeeTests_macOS.xctest; path = BumblebeeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FR_616239973998 /* EmojiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTests.swift; sourceTree = "<group>"; };
-		FR_661919236675 /* BumblebeeTests_watchOS.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = file; name = BumblebeeTests_watchOS.xctest; path = BumblebeeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FR_768980951973 /* bumblebeeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bumblebeeTests.swift; sourceTree = "<group>"; };
-		FR_897679332474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FR_919963003752 /* Bumblebee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bumblebee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FR_129992608725 /* Info.plist */ = {isa = PBXFileReference; path = Info.plist; sourceTree = "<group>"; };
+		FR_385710148880 /* bumblebee.swift */ = {isa = PBXFileReference; path = bumblebee.swift; sourceTree = "<group>"; };
+		FR_458247305677 /* Bumblebee_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = framework; includeInIndex = 0; path = Bumblebee_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FR_526567392730 /* Bumblebee_macOS.framework */ = {isa = PBXFileReference; explicitFileType = framework; includeInIndex = 0; path = Bumblebee_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FR_533142740653 /* BumblebeeTests_iOS.xctest */ = {isa = PBXFileReference; explicitFileType = xctest; includeInIndex = 0; path = BumblebeeTests_iOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FR_537431329142 /* BumblebeeTests_macOS.xctest */ = {isa = PBXFileReference; explicitFileType = xctest; includeInIndex = 0; path = BumblebeeTests_macOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FR_616239973998 /* EmojiTests.swift */ = {isa = PBXFileReference; path = EmojiTests.swift; sourceTree = "<group>"; };
+		FR_661919236675 /* BumblebeeTests_watchOS.xctest */ = {isa = PBXFileReference; explicitFileType = xctest; includeInIndex = 0; path = BumblebeeTests_watchOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FR_768980951973 /* bumblebeeTests.swift */ = {isa = PBXFileReference; path = bumblebeeTests.swift; sourceTree = "<group>"; };
+		FR_897679332474 /* Info.plist */ = {isa = PBXFileReference; path = Info.plist; sourceTree = "<group>"; };
+		FR_919963003752 /* Bumblebee_iOS.framework */ = {isa = PBXFileReference; explicitFileType = framework; includeInIndex = 0; path = Bumblebee_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF_359335301727 /* Bumblebee.framework in Frameworks */,
+				BF_359335301727 /* Bumblebee_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF_106046297315 /* Bumblebee.framework in Frameworks */,
+				BF_106046297315 /* Bumblebee_macOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF_630092758418 /* Bumblebee.framework in Frameworks */,
+				BF_630092758418 /* Bumblebee_watchOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +100,7 @@
 				FR_897679332474 /* Info.plist */,
 				FR_768980951973 /* bumblebeeTests.swift */,
 			);
+			name = Tests;
 			path = Tests;
 			sourceTree = "<group>";
 		};
@@ -111,9 +119,9 @@
 				FR_533142740653 /* BumblebeeTests_iOS.xctest */,
 				FR_537431329142 /* BumblebeeTests_macOS.xctest */,
 				FR_661919236675 /* BumblebeeTests_watchOS.xctest */,
-				FR_919963003752 /* Bumblebee.framework */,
-				FR_526567392730 /* Bumblebee.framework */,
-				FR_458247305677 /* Bumblebee.framework */,
+				FR_919963003752 /* Bumblebee_iOS.framework */,
+				FR_526567392730 /* Bumblebee_macOS.framework */,
+				FR_458247305677 /* Bumblebee_watchOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,8 +129,10 @@
 		G_8934779235101 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				FR_129992608725 /* Info.plist */,
 				FR_385710148880 /* bumblebee.swift */,
 			);
+			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -141,7 +151,7 @@
 			);
 			name = Bumblebee_watchOS;
 			productName = Bumblebee_watchOS;
-			productReference = FR_458247305677 /* Bumblebee.framework */;
+			productReference = FR_458247305677 /* Bumblebee_watchOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		NT_526567392730 /* Bumblebee_macOS */ = {
@@ -156,7 +166,7 @@
 			);
 			name = Bumblebee_macOS;
 			productName = Bumblebee_macOS;
-			productReference = FR_526567392730 /* Bumblebee.framework */;
+			productReference = FR_526567392730 /* Bumblebee_macOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		NT_533142740653 /* BumblebeeTests_iOS */ = {
@@ -222,7 +232,7 @@
 			);
 			name = Bumblebee_iOS;
 			productName = Bumblebee_iOS;
-			productReference = FR_919963003752 /* Bumblebee.framework */;
+			productReference = FR_919963003752 /* Bumblebee_iOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -233,10 +243,12 @@
 			attributes = {
 				LastUpgradeCheck = 0920;
 			};
-			buildConfigurationList = CL_198615098559 /* Build configuration list for PBXProject "BumbleBee" */;
+			buildConfigurationList = CL_198615098559 /* Build configuration list for PBXProject "Bumblebee" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
+			knownRegions = (
+			);
 			mainGroup = G_8448771205358;
 			projectDirPath = "";
 			projectRoot = "";
@@ -334,6 +346,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_TESTABILITY = YES;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vluxe.io.Bumblebee;
 				PRODUCT_NAME = Bumblebee;
@@ -349,7 +362,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks @loader_path/Frameworks",
+				);
 				PRODUCT_NAME = BumblebeeTests;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -363,7 +379,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks @loader_path/Frameworks",
+				);
 				PRODUCT_NAME = BumblebeeTests;
 				SDKROOT = macosx;
 			};
@@ -380,6 +399,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_TESTABILITY = YES;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vluxe.io.Bumblebee;
@@ -400,6 +420,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_TESTABILITY = YES;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vluxe.io.Bumblebee;
 				PRODUCT_NAME = Bumblebee;
@@ -420,8 +441,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_TESTABILITY = YES;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vluxe.io.Bumblebee;
 				PRODUCT_NAME = Bumblebee;
 				SDKROOT = iphoneos;
@@ -495,7 +520,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks @loader_path/Frameworks",
+				);
 				PRODUCT_NAME = BumblebeeTests;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -508,7 +536,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks @loader_path/Frameworks",
+				);
 				PRODUCT_NAME = BumblebeeTests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -520,7 +551,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks @loader_path/Frameworks",
+				);
 				PRODUCT_NAME = BumblebeeTests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -533,7 +567,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks @loader_path/Frameworks",
+				);
 				PRODUCT_NAME = BumblebeeTests;
 				SDKROOT = macosx;
 			};
@@ -550,6 +587,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_TESTABILITY = YES;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vluxe.io.Bumblebee;
@@ -570,8 +608,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_TESTABILITY = YES;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vluxe.io.Bumblebee;
 				PRODUCT_NAME = Bumblebee;
 				SDKROOT = iphoneos;
@@ -635,7 +677,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CL_198615098559 /* Build configuration list for PBXProject "BumbleBee" */ = {
+		CL_198615098559 /* Build configuration list for PBXProject "Bumblebee" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC_479945831424 /* Debug */,
