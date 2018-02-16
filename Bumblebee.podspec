@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Bumblebee"
-  s.version      = "1.0.1"
+  s.version      = "2.0.0"
   s.summary      = "Abstract text processing and pattern matching engine in Swift. Converts text into NSAttributedStrings. Builtin markdown support."
   s.homepage     = "https://github.com/daltoniam/bumblebee"
   s.license      = 'Apache License, Version 2.0'
