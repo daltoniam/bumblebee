@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Bumblebee"
-  s.version      = "1.0.1"
+  s.version      = "2.0.0"
   s.summary      = "Abstract text processing and pattern matching engine in Swift. Converts text into NSAttributedStrings. Builtin markdown support."
   s.homepage     = "https://github.com/daltoniam/bumblebee"
   s.license      = 'Apache License, Version 2.0'
@@ -9,6 +9,6 @@ Pod::Spec.new do |s|
   s.social_media_url = 'http://twitter.com/daltoniam'
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.9'
-  s.source_files = '*.swift'
+  s.source_files = 'Sources/*.swift'
   s.requires_arc = 'true'
 end
