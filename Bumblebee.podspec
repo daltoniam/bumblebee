@@ -8,7 +8,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => 'https://github.com/daltoniam/bumblebee.git',  :tag => "#{s.version}"}
   s.social_media_url = 'http://twitter.com/daltoniam'
   s.ios.deployment_target = '8.0'
-  s.osx.deployment_target = '10.9'
+  s.osx.deployment_target = '10.10'
   s.source_files = 'Sources/*.swift'
-  s.requires_arc = 'true'
 end
