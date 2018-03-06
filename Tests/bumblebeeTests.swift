@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 vluxe. All rights reserved.
 //
 
-import UIKit
 import XCTest
 
 class bumblebeeTests: XCTestCase {
@@ -20,7 +19,7 @@ class bumblebeeTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
     func testExample() {
         // This is an example of a functional test case.
         XCTAssert(true, "Pass")
@@ -28,7 +27,7 @@ class bumblebeeTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+		self.measure() {
             // Put the code you want to measure the time of here.
         }
     }

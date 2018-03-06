@@ -1,0 +1,25 @@
+name: Bumblebee
+options:
+  deploymentTarget:
+    macOS: 10.11
+    iOS: 8.0
+    watchOS: 2.0
+targets:
+  Bumblebee:
+    type: framework
+    platform: [iOS, macOS, watchOS]
+    sources: Sources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.vluxe.io.Bumblebee
+    scheme:
+      gatherCoverageData: true
+      testTargets:
+        - BumblebeeTests_$platform
+  BumblebeeTests:
+    type: bundle.unit-test
+    platform: [iOS, macOS, watchOS]
+    sources: Tests
+    dependencies:
+      - target: Bumblebee_$platform
+

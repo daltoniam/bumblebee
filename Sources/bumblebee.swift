@@ -78,7 +78,7 @@ open class Parser {
                     let regex = try opt.pattern.regex()
                     var diff = 0
                     let mutText = mutStr.string
-                    let matches = regex.matches(in: mutText, range: NSMakeRange(0, mutStr.string.utf16.count))
+                    let matches = regex.matches(in: mutText, range: NSMakeRange(0, mutStr.string.count))
                     for result in matches {
                         if result.numberOfRanges > 0 {
                             let range = result.range(at: 0)
@@ -88,25 +88,24 @@ open class Parser {
                             }
                             let start = mutText.index(mutText.startIndex, offsetBy: range.location)
                             let end = mutText.index(mutText.startIndex, offsetBy: range.location + range.length)
-                            
-                            if let str = String(mutText.utf16[start..<end]) {
-                                let transform = opt.pattern.transform(text: str)
-                                let response = opt.matched(transform.text, transform.attributes)
-                                
-                                //diff range accounts for any char changes (string is now a different length)
-                                let diffRange = NSMakeRange(location + diff, range.length)
-                                //merge and apply attributes
-                                var attrs = mutStr.attributes(at: diffRange.location, longestEffectiveRange: nil, in: diffRange)
-                                if let newAttrs = response.attributes {
-                                    for (key, value) in newAttrs {
-                                        attrs[key] = value
-                                    }
-                                }
-                                //create an attributed string with the attributes of the orignial string with any new additions for the matched response
-                                let replaceStr = NSAttributedString(string: response.string, attributes: attrs)
-                                diff += response.string.utf16.count - str.utf16.count
-                                mutStr.replaceCharacters(in: diffRange, with: replaceStr)
-                            }
+
+							let str = String(mutText[start..<end])
+							let transform = opt.pattern.transform(text: str)
+							let response = opt.matched(transform.text, transform.attributes)
+							
+							//diff range accounts for any char changes (string is now a different length)
+							let diffRange = NSMakeRange(location + diff, range.length)
+							//merge and apply attributes
+							var attrs = mutStr.attributes(at: diffRange.location, longestEffectiveRange: nil, in: diffRange)
+							if let newAttrs = response.attributes {
+								for (key, value) in newAttrs {
+									attrs[key] = value
+								}
+							}
+							//create an attributed string with the attributes of the orignial string with any new additions for the matched response
+							let replaceStr = NSAttributedString(string: response.string, attributes: attrs)
+							diff += response.string.count - str.count
+							mutStr.replaceCharacters(in: diffRange, with: replaceStr)
                         }
                     }
                 } catch {
