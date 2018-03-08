@@ -86,8 +86,8 @@ open class Parser {
                             if location == NSNotFound {
                                 continue
                             }
-                            let start = mutText.index(mutText.startIndex, offsetBy: range.location)
-                            let end = mutText.index(mutText.startIndex, offsetBy: range.location + range.length)
+                            let start = mutText.utf16.index(mutText.startIndex, offsetBy: range.location)
+                            let end = mutText.utf16.index(mutText.startIndex, offsetBy: range.location + range.length)
                             
                             if let str = String(mutText.utf16[start..<end]) {
                                 let transform = opt.pattern.transform(text: str)
