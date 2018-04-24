@@ -68,10 +68,10 @@ open class Parser {
     
     //This is where the magic happens. This methods creates a attributed string
     //with all the pattern operations off the text provided
-    public func process(text: String, attributes: [NSAttributedStringKey: Any]? = nil, completion: @escaping ((NSAttributedString?) -> Void)) {
+    public func process(text: String, attributes: [NSAttributedStringKey: Any]? = nil, observedOn: DispatchQueue = .global(qos: .background), subscribedOn: DispatchQueue = .main, completion: @escaping ((NSAttributedString?) -> Void)) {
         //background operation to deal with possible long term parsing
         let opts = matchOpts //avoid race condition in the rare case that the add method is called with text is being processed
-        DispatchQueue.global(qos: .background).async {
+        observedOn.async {
             let mutStr = NSMutableAttributedString(string: text, attributes: attributes)
             for opt in opts {
                 do {
@@ -110,13 +110,13 @@ open class Parser {
                         }
                     }
                 } catch {
-                    DispatchQueue.main.async {
+                    subscribedOn.async {
                         completion(nil) //the regex failed, you get nothing! (or I guess an error if we wanted, very unlikely this will happen)
                     }
                     return
                 }
             }
-            DispatchQueue.main.async {
+            subscribedOn.async {
                 completion(mutStr)
             }
         }
