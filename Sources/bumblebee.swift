@@ -7,9 +7,9 @@
 
 import Foundation
 #if os(OSX)
-    import AppKit
+import AppKit
 #else
-    import UIKit
+import UIKit
 #endif
 
 //using this instead of a NSAttributed String just to be very clear on what is happening
@@ -23,7 +23,7 @@ public struct MatchedResponse {
     }
 }
 
-public typealias MatchClosure = (String, [String: String]?) -> MatchedResponse
+public typealias MatchClosure = (String, [String: String]?, [String: String]?) -> MatchedResponse
 
 //This is a protocol to allow custom regex patterns to be create outside of the ones provided below
 public protocol Pattern {
@@ -49,6 +49,9 @@ class Matcher {
     }
 }
 
+// Bool value to return if you want this attachment to be on its own newline if needed.
+public let attachmentWhiteSpace: NSAttributedStringKey = NSAttributedStringKey(rawValue: "bumblebeewhitespace")
+
 //Where the actual magic starts
 open class Parser {
     var matchOpts = [Matcher]()
@@ -63,12 +66,13 @@ open class Parser {
     }
     
     public func remove(pattern: Pattern) {
+        //TODO: why didn't I finish this?
         //matchOpts.remove
     }
     
     //This is where the magic happens. This methods creates a attributed string
     //with all the pattern operations off the text provided
-    public func process(text: String, attributes: [NSAttributedStringKey: Any]? = nil, observedOn: DispatchQueue = .global(qos: .background), subscribedOn: DispatchQueue = .main, completion: @escaping ((NSAttributedString?) -> Void)) {
+    public func process(text: String, attributes: [NSAttributedStringKey: Any]? = nil, identifiers: [String: String]? = nil, observedOn: DispatchQueue = .global(qos: .background), subscribedOn: DispatchQueue = .main, completion: @escaping ((NSAttributedString?) -> Void)) {
         //background operation to deal with possible long term parsing
         let opts = matchOpts //avoid race condition in the rare case that the add method is called with text is being processed
         observedOn.async {
@@ -78,7 +82,7 @@ open class Parser {
                     let regex = try opt.pattern.regex()
                     var diff = 0
                     let mutText = mutStr.string
-                    let matches = regex.matches(in: mutText, range: NSMakeRange(0, mutStr.string.utf16.count))
+                    let matches = regex.matches(in: mutText, range: NSMakeRange(0, mutStr.string.count))
                     for result in matches {
                         if result.numberOfRanges > 0 {
                             let range = result.range(at: 0)
@@ -89,24 +93,32 @@ open class Parser {
                             let start = mutText.index(mutText.startIndex, offsetBy: range.location)
                             let end = mutText.index(mutText.startIndex, offsetBy: range.location + range.length)
                             
-                            if let str = String(mutText.utf16[start..<end]) {
-                                let transform = opt.pattern.transform(text: str)
-                                let response = opt.matched(transform.text, transform.attributes)
-                                
-                                //diff range accounts for any char changes (string is now a different length)
-                                let diffRange = NSMakeRange(location + diff, range.length)
-                                //merge and apply attributes
-                                var attrs = mutStr.attributes(at: diffRange.location, longestEffectiveRange: nil, in: diffRange)
-                                if let newAttrs = response.attributes {
-                                    for (key, value) in newAttrs {
-                                        attrs[key] = value
-                                    }
+                            let str = String(mutText[start..<end])
+                            let transform = opt.pattern.transform(text: str)
+                            let response = opt.matched(transform.text, transform.attributes, identifiers)
+                            
+                            //diff range accounts for any char changes (string is now a different length)
+                            let diffRange = NSMakeRange(location + diff, range.length)
+                            //merge and apply attributes
+                            var attrs = mutStr.attributes(at: diffRange.location, longestEffectiveRange: nil, in: diffRange)
+                            if let newAttrs = response.attributes {
+                                for (key, value) in newAttrs {
+                                    attrs[key] = value
                                 }
-                                //create an attributed string with the attributes of the orignial string with any new additions for the matched response
-                                let replaceStr = NSAttributedString(string: response.string, attributes: attrs)
-                                diff += response.string.utf16.count - str.utf16.count
-                                mutStr.replaceCharacters(in: diffRange, with: replaceStr)
                             }
+                            //create an attributed string with the attributes of the orignial string with any new additions for the matched response
+                            var replaceStr = NSAttributedString(string: response.string, attributes: attrs)
+                            if let value = attrs[attachmentWhiteSpace], let boolValue = value as? Bool,
+                                boolValue, range.location != 0 {
+                                let index = mutText.index(mutText.startIndex, offsetBy: range.location - 1)
+                                if mutText[index] != "\n" {
+                                    let spaceStr = NSMutableAttributedString(string: "\n", attributes: attributes)
+                                    spaceStr.append(replaceStr)
+                                    replaceStr = spaceStr
+                                }
+                            }
+                            diff += response.string.count - str.count
+                            mutStr.replaceCharacters(in: diffRange, with: replaceStr)
                         }
                     }
                 } catch {
@@ -218,7 +230,7 @@ public struct MDBoldPattern : Pattern {
     
     public func transform(text: String) -> (text: String, attributes: [String: String]?) {
         let newText = String(text[text.index(text.startIndex, offsetBy: 2)..<text.index(text.endIndex, offsetBy: -2)])
-
+        
         return (newText, nil)
     }
 }
@@ -235,3 +247,4 @@ public struct MDEmphasisPattern : Pattern {
         return (newText, nil)
     }
 }
+
