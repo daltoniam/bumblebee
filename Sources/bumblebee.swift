@@ -15,9 +15,9 @@ import Foundation
 //using this instead of a NSAttributed String just to be very clear on what is happening
 public struct MatchedResponse {
     let string: String
-    let attributes: [NSAttributedStringKey: Any]?
+    let attributes: [NSAttributedString.Key: Any]?
     //only needed to allow public initialization
-    public init(string: String, attributes: [NSAttributedStringKey: Any]?) {
+    public init(string: String, attributes: [NSAttributedString.Key: Any]?) {
         self.string = string
         self.attributes = attributes
     }
@@ -68,7 +68,7 @@ open class Parser {
     
     //This is where the magic happens. This methods creates a attributed string
     //with all the pattern operations off the text provided
-    public func process(text: String, attributes: [NSAttributedStringKey: Any]? = nil, observedOn: DispatchQueue = .global(qos: .background), subscribedOn: DispatchQueue = .main, completion: @escaping ((NSAttributedString?) -> Void)) {
+    public func process(text: String, attributes: [NSAttributedString.Key: Any]? = nil, observedOn: DispatchQueue = .global(qos: .background), subscribedOn: DispatchQueue = .main, completion: @escaping ((NSAttributedString?) -> Void)) {
         //background operation to deal with possible long term parsing
         let opts = matchOpts //avoid race condition in the rare case that the add method is called with text is being processed
         observedOn.async {
@@ -194,7 +194,7 @@ public struct MDImagePattern : Pattern {
     public static let linkAttribute = "md-link"
     public static let altTextAttribute = "md-alt"
     public static var attachmentString: String {
-        return "\(Character(UnicodeScalar(NSAttachmentCharacter)!))"
+        return "\(Character(UnicodeScalar(NSTextAttachment.character)!))"
     }
     public init() {} //only need to allow public initialization
     public func regex() throws -> NSRegularExpression {
